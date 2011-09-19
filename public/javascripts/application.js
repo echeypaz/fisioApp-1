@@ -28,5 +28,14 @@ $(function (){
            	return false;
        });  
        
+    $("#paciente_fullname").change(function(){
+    	var paciente_fullname = $("#paciente_fullname");
+   		if(paciente_fullname = ""){
+   			$("#search_client_id").val("");
+   		}
+   		return false;
+    });
+                
+                
 
 });

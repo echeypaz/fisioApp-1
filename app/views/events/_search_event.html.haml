@@ -3,9 +3,13 @@
 = text_field_tag :search_client_id, '',:type=>"hidden"
 = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_client_id'
 = label_tag "Especialista"
-= grouped_collection_select(:specialist, :specialist_id, @specialisttypes, :specialist, :name, :id, :name)
+= grouped_collection_select(:specialist, :specialist_id, @specialisttypes, :specialist, :name, :id, :name,:include_blank=>true)
 = label_tag "Centro"
-= select_tag 'Centro', options_from_collection_for_select(@centers, 'id', 'name')
+= select_tag(:center_id, options_from_collection_for_select(@centers, 'id', 'name'), :include_blank=>true)
 
 %button{:onClick => '$("#calendar").fullCalendar("refetchEvents")'}
   Buscar 
+
+
+
+    

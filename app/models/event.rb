@@ -34,10 +34,7 @@ class Event < ActiveRecord::Base
   validates :specialist_id, :center_id, :paciente_id,:starts_at, :presence => true
   scope :before, lambda {|end_time| {:conditions => ["ends_at < ?", Event.format_date(end_time)] }}
   scope :after, lambda {|start_time| {:conditions => ["starts_at > ?", Event.format_date(start_time)] }}
-  scope :filter_c, lambda {|center_id| where(:center_id => center_id)}
-  scope :filter_s, lambda {|specialist_id| where(:specialist_id => specialist_id)}
-  scope :filter_p, lambda {|paciente_id| where(:paciente_id => paciente_id)}
-  
+   
   # need to override the json view to return what full_calendar is expecting.
   # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
   def as_json(options = {})
@@ -53,7 +50,7 @@ class Event < ActiveRecord::Base
       :center_id => self.center_id,
       :attended => self.attended,
       :paciente_id => self.paciente_id,
-      :specialist_is => self.specialist_id,
+      :specialist_id => self.specialist_id,
     }
     
   end
@@ -62,13 +59,9 @@ class Event < ActiveRecord::Base
     Time.at(date_time.to_i).to_formatted_s(:db)
   end
   
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['center_id = ?', search])
-    else
-      find(:all)
-    end
-  end
+  def self.search(paciente_id, center_id, specialist_id)
+ 
+     end
   def fulldescription
       "#{self.specialist.name}, #{self.center.name}"
   end

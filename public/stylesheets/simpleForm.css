@@ -76,7 +76,7 @@
   	background-color: #FFF6BF;
 }
 
-.simple_form label, .search-paciente label{
+.simple_form label, label{
   margin-left: 10px;
   vertical-align: middle;
   font-weight: normal;
@@ -182,5 +182,4 @@ button a{
 	text-transform: none;
 	color: #000000;
 }
-
 

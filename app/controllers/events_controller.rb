@@ -10,8 +10,17 @@ class EventsController < ApplicationController
     @events = Event.scoped  
     @events = @events.after(params['start']) if (params['start'])
     @events = @events.before(params['end']) if (params['end'])
-    @events = @events.where(:paciente_id => params['paciente_id']) unless params['paciente_id'].blank?
     
+    if (!params[:paciente_id].blank?)
+      @events = @events.where(:paciente_id => params['paciente_id']) 
+    end
+    if (!params[:center].blank?)
+      @events = @events.where(:center_id => params['center_id']) 
+    end
+    if (!params[:specialist_id].blank?)
+      @events = @events.where(:specialist_id => params['specialist_id']) 
+    end
+        
     @specialisttypes = Specialisttype.all
     @centers = Center.all    
     @event = Event.new
@@ -39,9 +48,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
   end
-  def find
-    
-  end
 
   # GET /events/1/edit
   def edit
@@ -52,11 +58,6 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-    @event.paciente = Paciente.find_by_id(params[:search])
-    @event.starts_at = params[:start]
-    @event.ends_at = params[:start]
-    @event.title = @event.paciente.funky_method
-    @event.description = @event.fulldescription
     respond_to do |format|
       if @event.save
         format.html { redirect_to events_path}
@@ -103,9 +104,11 @@ class EventsController < ApplicationController
   end
   
   def info
-    paciente = Paciente.where(:id=>params[:id]) unless params[:id].blank?
+    paciente = Paciente.find(params[:id])
     respond_to do |format|
-      format.json { render :json => paciente.map {|paciente| ["#{paciente.name} #{paciente.firstsurname} #{paciente.secondsurname}, #{paciente.idcode}", paciente.id] }.to_json }
+      format.json do
+        render :json => paciente
+      end
     end
   end
   

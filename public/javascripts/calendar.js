@@ -39,6 +39,8 @@ $(document).ready(function() {
 	                start: Math.round(start.getTime() / 1000),
 	                end: Math.round(end.getTime() / 1000),
 	                paciente_id: $("#search_client_id").val(),
+	                center_id: $("#center_id").val(),
+	                specialist_id: $("#specialist_specialist_id").val(),
 	            },
 	            success: function(response) {
 	                callback(response);

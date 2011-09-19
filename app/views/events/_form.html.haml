@@ -1,24 +1,42 @@
-
+%table.izquierda
+  %tr
+    %td
+      %b Buscador de pacientes (nombre, apellidos o dni)
+    %td.mediano= autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_client_id'
+    %td
+      = text_field_tag 'search_client_id', '',:type=>"hidden",:placeholder => ""
+      %button{:onClick => "buscar_paciente()"}
+        Buscar 
 = simple_form_for @event do |f|
-  = render "shared/error_messages", :target => @event
-  %table
-    %tr
-      %td
-        = label_tag 'Nombre'
-        = text_field_tag :search, params[:search], :type=>"hidden"
-        = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search'
-      %td= f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
-      %td= f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
-    %tr
-      %td
-        = label_tag 'Día'
-        = text_field_tag :dia, '', :id_element =>'dia',:disabled => true
-        = f.input :attended, :label => "Confirmado",:readonly => 'true'
-      %td
-        = f.input :starts_at, :as=>:string, :label => "Hora",:disabled => true      
-        = f.input :id
-      %td.mediano{:colspan=>"3"}= f.input :description, :label=>"Observaciones"
-  = link_to 'Eliminar', :confirm => '¿Seguro que desea eliminar la cita?',  :method => :confirm
-  = link_to 'Confirmar', :confirm => '¿Desea confirmar la asistencia del paciente?', :method => :confirm
-  = submit_tag 'Nueva Cita'
+  %fieldset.izquierda
+    %legend Datos de la cita
+    = render "shared/error_messages", :target => @event
+    %table
+      %tr
+        %td= f.input :name, :label => 'Nombre'
+        %td= f.input :firstsurname, :label => 'Apellido 1'
+        %td= f.input :secondsurname, :label => 'Apellido 2'
+        %td
+      %tr  
+        %td
+          = label_tag 'Día'
+          = text_field_tag :dia, '', :id_element =>'dia',:disabled => true
+        %td= f.input :starts_at, :as=>:string, :label => "Hora",:disabled => true      
+        %td= f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
+        %td= f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
+    
+      %tr
+        %td= f.input :attended, :label => "Confirmado",:readonly => 'true'
+        %td.mediano{:colspan=>"2"}= f.input :description, :label=>"Observaciones"
+    = link_to 'Eliminar', :confirm => '¿Seguro que desea eliminar la cita?',  :method => :confirm
+    = link_to 'Confirmar', :confirm => '¿Desea confirmar la asistencia del paciente?', :method => :confirm
+    = submit_tag 'Nueva Cita'
 
+:javascript
+  function buscar_paciente(){
+    var paciente_id = $("#search_client_id").val();
+    $.getJSON('/events/' + paciente_id + '/info', function(result) {
+       for(key in result.paciente)
+          $("#event_" + key).val(result.paciente[key]);
+    });
+  }
