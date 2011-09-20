@@ -80,19 +80,20 @@ $(document).ready(function() {
           // would like a lightbox here.
           	dia = $.fullCalendar.formatDate(event.start, 'ddd ,yyyy-MM-dd' );
          	$("#dia").val(dia);
-         	$("#event_starts_at").val($.fullCalendar.formatDate(event.start, 'HH:mm' ));
-            $("#event_ends_at").val($.fullCalendar.formatDate(date, 'HH:mm' ));
-            $("#start").val(event.start);
-            $("#event_description").val(event.description);
-            $("#end").val($.fullCalendar.formatDate(date, 'HH:mm' ));
-            $("#Centro").val(event.center_id);
-            $("#specialist_specialist_id").val(event.specialist_id);
-            $("#event_attended").attr("checked", event.attended)
-            $("#event_id").val(event.id);
+         	$("#hora").val($.fullCalendar.formatDate(event.start, 'HH:mm' ));
+            $("#event_center_id").val(event.center_id);
+            $("#event_specialist_id").val(event.specialist_id);
+            if (event.attended ==true){
+             	$("#event_attended").attr('checked', true);}
+            else{
+            	$("#event_attended").attr('checked', false);}
+            $("#id").val(event.id);
             var paciente_id = event.paciente_id;
-	        $.getJSON('/events/' + paciente_id + '/info', function(paciente) {
-	        	$("#paciente_name").val(paciente[0][0]);
-	        });
+	       	$.getJSON('/events/' + paciente_id + '/info', function(result) {
+       			for(key in result.paciente)
+          		$("#event_" + key).val(result.paciente[key]);
+    		});
+    		
 			//Mostrar el formulario
         	return false;
         },
@@ -102,10 +103,8 @@ $(document).ready(function() {
 			
          	dia = $.fullCalendar.formatDate(date, 'ddd ,yyyy-MM-dd' );
          	$("#dia").val(dia);
-         	$("#event_starts_at").val($.fullCalendar.formatDate(date, 'HH:mm' ));
-            $("#event_ends_at").val($.fullCalendar.formatDate(date, 'HH:mm' ));
-            $("#start").val(date);
-            $("#end").val($.fullCalendar.formatDate(date, 'HH:mm' ));
+         	$("#hora").val($.fullCalendar.formatDate(date, 'HH:mm' ));
+            $("#event_starts_at").val(date);
 
 			//Mostrar el formulario
 		},

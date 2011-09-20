@@ -31,7 +31,11 @@ class Event < ActiveRecord::Base
   belongs_to  :paciente
   has_one     :invoiceline
   belongs_to  :clinicalhistory
-  validates :specialist_id, :center_id, :paciente_id,:starts_at, :presence => true
+  validates :specialist_id, :center_id,:starts_at, :name, :firstsurname, :secondsurname, :presence => true
+  
+  
+  before_create  :set_default_parameters
+
   scope :before, lambda {|end_time| {:conditions => ["ends_at < ?", Event.format_date(end_time)] }}
   scope :after, lambda {|start_time| {:conditions => ["starts_at > ?", Event.format_date(start_time)] }}
    
@@ -59,11 +63,10 @@ class Event < ActiveRecord::Base
     Time.at(date_time.to_i).to_formatted_s(:db)
   end
   
-  def self.search(paciente_id, center_id, specialist_id)
- 
-     end
-  def fulldescription
-      "#{self.specialist.name}, #{self.center.name}"
+  def set_default_parameters
+      self.title = "#{self.name} #{self.firstsurname} #{self.secondsurname}"
+      self.description = "#{self.specialist.name}, #{self.center.name}"
+      self.ends_at = self.starts_at + 1
   end
 
 end

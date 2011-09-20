@@ -37,8 +37,9 @@ FisioApp::Application.routes.draw do
   match 'clinicalhistories/update_rate_select/:id', :controller=>'clinicalhistories', :action => 'update_rate_select'
   match 'clinicalhistories/update_rate/:id', :controller=>'clinicalhistories', :action => 'update_rate'
   #match 'events/info/:id', :controller=>'events', :action => 'info'
-  match 'events/confirm/', :controller=>'events', :action => 'confirm'
+  match 'events/:id/confirm', :controller=>'events', :action => 'confirm'
   match 'events/search_paciente_events/:id', :controller=>'events', :action => 'search_paciente_events'
+  match 'events/:id/destroy', :controller=>'events', :action => 'destroy'
 
   match 'clinicalhistories/search_clinicalhistory/:id', :controller=>'clinicalhistories', :action => 'search_clinicalhistory'
   match 'clinicalhistories/update_specialist/:id', :controller=>'clinicalhistories', :action => 'update_specialist'
