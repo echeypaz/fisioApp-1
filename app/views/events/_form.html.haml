@@ -16,8 +16,9 @@
       %tr
         %td= f.input :name, :label => 'Nombre'
         %td= f.input :firstsurname, :label => 'Apellido 1'
-        %td= f.input :secondsurname, :label => 'Apellido 2'
-        %td= text_field_tag :id, '' ,:READONLY => true
+        %td
+          = f.input :secondsurname, :label => 'Apellido 2'
+          = text_field_tag :id, '' ,:READONLY => true, :hidden=>'true'
 
       %tr  
         %td
@@ -27,8 +28,9 @@
           = label_tag 'Hora'
           = text_field_tag :hora, '', :id_element =>'hora',:READONLY => true
           = f.input :starts_at, :as=>:string, :as=>:hidden, :label => false 
-        %td= f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
-        %td= f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
+        %td
+          = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
+          = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
     
       %tr
         %td= f.input :attended, :label => "Confirmado", :input_html => { :disabled => 'true' }

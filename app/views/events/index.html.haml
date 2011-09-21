@@ -1,9 +1,16 @@
-%b Gestión de citas
-%fieldset
-  %legend Buscador de citas
-  = render :partial => 'search_event'
-%fieldset
-  %legend Crear una nueva cita
-  = render :partial =>'events/form'
+#tabs
+  %ul
+    %li=link_to "BUSCAR CITA","#tabs1"
+    %li=link_to "CREAR NUEVA CITA","#tabs2"
+  
+  #tabs1
+    = render :partial => 'search_event'
+  #tabs2
+    .cabecera
+      = render :partial =>'events/form'
 
 #calendar
+:javascript
+  $(function() {
+    $( "#tabs" ).tabs();
+  });

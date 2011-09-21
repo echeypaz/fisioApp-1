@@ -189,3 +189,7 @@ nav ul li a:hover {
   height:203px;
 }
 
+#tabs{
+	font-size: 80%;
+	margin-bottom: 10px;
+}
