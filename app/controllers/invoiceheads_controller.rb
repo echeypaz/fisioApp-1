@@ -2,8 +2,9 @@ class InvoiceheadsController < ApplicationController
   # GET /invoiceheads
   # GET /invoiceheads.xml
   def index
-    @paciente = Paciente.search(params[:search])
     @invoiceheads = Events.new
+    
+    
     @clinicalhistory = Clinicalhistory.where(:paciente_id => params[:search]).order("assessmentdate DESC").first
 
     #TODO Faltaría añadir aquellos eventos que no se han pagado, osea que tienen invoiceline.null?

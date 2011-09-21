@@ -2,7 +2,7 @@ class CreateInvoiceheads < ActiveRecord::Migration
   def self.up
     create_table :invoiceheads do |t|
       t.string :name
-      t.string :firstSurname
+      t.string :firstsurname
       t.string :secondsurname
       t.string :comments
 

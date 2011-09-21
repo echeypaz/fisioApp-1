@@ -16,15 +16,15 @@
           %td= f.label :name, "Nombre Cliente"       
           %td= f.text_field :name
           %td= f.label :name, "Observaciones" 
-          %td.grande{:colspan=>3,:rowspan=>2 }= f.text_area :comments, :label => 'Observaciones'
+          %td.grande{:colspan=>3,:rowspan=>3 }= f.text_area :comments
         %tr
           %td= f.label :firstsurname, "Apellido1" 
           %td= f.text_field :firstsurname
           %td{:colspan=>4}
   
         %tr
-          %td= f.label :firstsurname, "Apellido2" 
-          %td= f.text_field :secondsurname, :label => 'Apellido2'
+          %td= f.label :secondsurname, "Apellido2" 
+          %td= f.text_field :secondsurname
           %td{:colspan=>4}
   
     .formulario

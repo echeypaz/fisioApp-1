@@ -19,7 +19,9 @@ module ApplicationHelper
   def citas
     image_tag("menu/citas.png", :alt => "Gestion de citas")
   end
-  
+  def remove
+    image_tag("icono/delete.png", :alt => "Borrar")
+  end
   def fulltitle
     base_title = "FisioApp, Fisioterapia Fisior Las palmas"
     if @title.nil?

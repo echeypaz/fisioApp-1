@@ -19,4 +19,17 @@ class Invoicehead < ActiveRecord::Base
   
   has_many  :invoicelines, :dependent => :destroy 
   accepts_nested_attributes_for :invoicelines, :reject_if => lambda { |a| a[:sessions].blank? }, :allow_destroy => true  
+
+  validates :name, :firstsurname, :presence => true
+  
+  before_create  :set_default_parameters
+  
+  private
+  def set_default_parameters
+    code = Countreference.find_by_name('F')
+    self.codigo = code.value
+    code.value = code.value + 1
+    code.save
+  end
+
 end

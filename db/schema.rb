@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916102239) do
+ActiveRecord::Schema.define(:version => 20110921090656) do
 
   create_table "centers", :force => true do |t|
     t.string   "name"
@@ -71,16 +71,6 @@ ActiveRecord::Schema.define(:version => 20110916102239) do
     t.string   "secondsurname"
   end
 
-  create_table "feetypes", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "sessions"
-    t.float    "rate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "provenance_id"
-  end
-
   create_table "idtypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -89,12 +79,13 @@ ActiveRecord::Schema.define(:version => 20110916102239) do
 
   create_table "invoiceheads", :force => true do |t|
     t.string   "name"
-    t.string   "firstsurname"
+    t.string   "firstSurname"
     t.string   "secondsurname"
     t.string   "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "paciente_id"
+    t.integer  "code"
   end
 
   create_table "invoicelines", :force => true do |t|
@@ -113,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20110916102239) do
     t.string   "name"
     t.string   "firstsurname"
     t.string   "secondsurname"
-    t.integer  "idtype"
     t.string   "idcode"
     t.string   "profession"
     t.string   "comments"
@@ -165,12 +155,9 @@ ActiveRecord::Schema.define(:version => 20110916102239) do
   end
 
   create_table "tabs", :force => true do |t|
-    t.string   "paciente_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "paciente_firstsurname"
-    t.string   "paciente_secondsurname"
-    t.string   "paciente_idcode"
   end
 
   create_table "users", :force => true do |t|
