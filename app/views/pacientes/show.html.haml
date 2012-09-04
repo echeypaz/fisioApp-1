@@ -1,49 +1,14 @@
-
-%p#notice= notice
-%p
-  %b Codigo:
-  = @paciente.codigo
-%p
-  %b Nombre:
-  = @paciente.name
-%p
-  %b Apellido 1:
-  = @paciente.firstsurname
-%p
-  %b Apellido 2:
-  = @paciente.secondsurname
-%p
-  %b Fecha de nacimiento:
-  = @paciente.birthdate
-%p
-  %b Edad:
-  = ((Time.now - @paciente.birthdate.to_time)/31536000).to_i unless @paciente.birthdate.nil?
-%p
-  = @paciente.idtype
-  = @paciente.idcode
-%p
-  %b Ocupación:
-  = @paciente.profession
-%p
-  %b Tipo:
-  = @paciente.feetype
-%p
-  %b Móvil:
-  = @paciente.mobilephone
-%p
-  %b Tfno:
-  = @paciente.homephone
-%p
-  %b Tfno Familiar:
-  = @paciente.familyphone
-%p
-  %b Email:
-  = @paciente.email
-%p
-  %b Dirección:
-  = @paciente.addres
-
-
-= link_to 'Edit', edit_paciente_path(@paciente)
-\|
-= link_to 'Back', pacientes_path
+=show_for resource do |item|
+  #basic_data
+    = item.attribute :codigo
+    = item.attribute :name
+    = item.attribute :firstsurname
+    = item.attribute :secondsurname
+    = item.attribute :birthdate
+    = item.attribute :profession
+    = item.attribute :mobilephone
+    = item.attribute :homephone
+    = item.attribute :email
+    = item.attribute :addres
+  = link_to t(:edit), edit_resource_path(resource)
+  = link_to t(:back), collection_path

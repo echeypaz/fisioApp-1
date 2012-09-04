@@ -1,0 +1,16 @@
+.field_with_errors {
+  border: 0;
+  background: none;
+  input {
+    border: 1px solid #C53D36;
+    background: #F2DEDE;
+  }
+  span.error {
+    width: 65%;
+    margin: 10px auto;
+    border: 0;
+    border-bottom: 1px dashed #C53D36;
+    color: #C53D36;
+    background: none;
+  }
+}

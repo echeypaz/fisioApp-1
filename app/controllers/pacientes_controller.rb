@@ -1,47 +1,17 @@
-class PacientesController < ApplicationController
-  # GET /pacientes
-  # GET /pacientes.xml
-  def index
-    @centers = Center.find(:all)
-    @specialisttypes = Specialisttype.find(:all)
-    @provenances = Provenance.find(:all)
-    @paciente = Paciente.find_by_id(params[:search])
-  end
-
-  # GET /pacientes/1
-  # GET /pacientes/1.xml
-  def show
-    @paciente = Paciente.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @paciente }
-    end
-  end
-
-  # GET /pacientes/new
-  # GET /pacientes/new.xml
-  def new
-    @title = "Nuevo paciente"
-    @tab = Tab.new
-    @centers = Center.find(:all)
-    @specialisttypes = Specialisttype.find(:all)
-    @provenances = Provenance.find(:all)
-    @paciente = Paciente.new
-  end
-
-  # GET /pacientes/1/edit
+class PacientesController < InheritedResources::Base
   def edit
-    @tab = Tab.new
     @paciente = Paciente.find(params[:id])
     @centers = Center.all
     @specialisttypes = Specialisttype.find(:all)
     @provenances = Provenance.find(:all)
-    @clinicalhistory = @paciente.clinicalhistories.order("assessmentdate DESC").first
+    if params[:clinicalhistory].nil?
+      @clinicalhistory = @paciente.clinicalhistories.order("assessmentdate DESC").first
+   else
+      @clinicalhistory = Clinicalhistory.find_by_id(params[:clinicalhistory])
+    end
+
   end
 
-  # POST /pacientes
-  # POST /pacientes.xml
   def create
     @paciente = Paciente.new(params[:paciente])
      respond_to do |format|
@@ -56,17 +26,16 @@ class PacientesController < ApplicationController
     end
   end
   
-  # PUT /pacientes/1
-  # PUT /pacientes/1.xml
   def update
-    #Buscamos 
     @paciente = Paciente.find(params[:id])
     @clinicalhistory = Clinicalhistory.find_by_id(params[:clinicalhistory][:id])
     respond_to do |format|
-      if @paciente.update_attributes(params[:paciente]) && @clinicalhistory.update_attributes(params[:clinicalhistory])
-        flash[:notice] = "Ficha de paciente actualizada correctamente"
-        format.html { redirect_to(edit_paciente_path(@paciente)) }
-        format.xml  { head :ok }
+      if @paciente.update_attributes(params[:paciente])
+        if @clinicalhistory.update_attributes(params[:clinicalhistory])
+          flash[:notice] = "Ficha de paciente actualizada correctamente"
+          format.html { redirect_to(edit_paciente_path(@paciente)) }
+          format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @paciente.errors, :status => :unprocessable_entity }
@@ -74,8 +43,6 @@ class PacientesController < ApplicationController
     end
   end
 
-  # DELETE /pacientes/1
-  # DELETE /pacientes/1.xml
   def destroy
     @paciente = Paciente.find(params[:id])
     @paciente.destroy
@@ -85,12 +52,31 @@ class PacientesController < ApplicationController
     end
   end
   
+  def update_clinicalhistory
+    update! do |success, failure|
+      success.js do
+        flash[:notice] = t(:clinicalhistory_updated)
+      end
+      failure.js do
+        render :new_clinicalhistory
+      end
+    end
+  end
   def new_clinicalhistory
     clinicalhistory = Clinicalhistory.new
+    clinicalhistory.medicalhistory = "Insertar Datos"
     @paciente = Paciente.find(params[:id])
     @paciente.clinicalhistories << clinicalhistory
     respond_to do |format|
-      render :json => clinicalhistory
+      flash[:notice] = (:new_clinicalhistory_saved)
+      format.html { redirect_to(edit_paciente_path(@paciente)) }
+      format.xml  { head :ok }
     end
   end
+
+  def collection
+    @pacientes ||= end_of_association_chain.page(params[:page]).per(20)
+  end
+
+ 
 end

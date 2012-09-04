@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '~>3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', :require => 'pg'
-gem 'kaminari'
+gem 'pg', '=0.13.2'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -30,23 +29,39 @@ gem 'kaminari'
 #   gem 'webrat'
 # end
 
- gem 'haml-rails'
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
+end
+ 
+gem 'haml-rails'
+ gem 'chosen-rails'
+ gem 'kaminari'
  gem 'simple_form'
- gem 'devise'
- gem 'rails3-jquery-autocomplete', '0.6.0'
+ gem 'show_for'
+ gem 'devise', '=1.5.2'
+ gem 'cancan'
+ gem 'cocoon'
+
+gem 'rails3-jquery-autocomplete'
+
+#gem "paperclip", "~> 3.0"
+
+
  gem 'nifty-generators'
- gem 'jquery-rails', '>=1.0.3' 
- gem "meta_where"
- gem "meta_search"
+ gem 'jquery-rails' 
+ gem 'inherited_resources'
+
+# gem "meta_where"
+# gem "meta_search", '~> 3.0.2'
  
  group :development do
-   gem 'annotate-models', '1.0.4'
-   gem 'ruby-debug19'
+ #  gem 'debugger'
    gem 'rspec-rails'
-   gem 'webrat'
  end
  group :test do
-   gem 'webrat'
    gem 'rspec'
    gem 'factory_girl_rails', '1.0'
  end

@@ -1,195 +1,0 @@
-.container { 
-	width: 1124px;} 
-body {	background: #fef977;} 
-header {	padding-top: 20px;
-	background: #9a2f41;
-	padding: 20px;
-}header img { 
-	background: #fff;
-	float: left;
-}
-header h1{
-	font-family: "Comic Sans MS";
-	font-weight: bold;
-	font-size: 500%;
-	padding-left: 400px;
-	color: #FFFFFF;
-	padding-top: 20px;
-
-}
-
-section { 
-	margin-top: 1em; 
-	font-size: 120%; 
-	padding-left: 10px; 
-	padding-right: 10px; 
-	padding-bottom: 10px;
-	background: #fff;
-} 
-section h1 {
-	font-size: 200%;
-	}
-
-section ul{
-	padding-left: 30px;
-	padding-right: 20px;
-
-}
-section ul li{
-	list-style-type: decimal; 
-
-}
-
-footer {	text-align: center; 
-	margin-top: 10px; 
-	width: 100%;
-	display: block;
-	clear: both; 
-} 
-footer nav {
-	float: none;
-	padding-left: 200px;}
-footer img{
-	float:right;
-}/* Links */.blanco a:hover { 
-	color: #fff; 
-	text-decoration: underline;} 
-.negro a, a:hover, a:visited{
-	color:#000000
-}
-.blanco a, a:hover, a:visited, nav{
-	color: #FFFFFF;
-}
-
-/* Navigation */
-nav { 
-	float: right;
-	color:#666666
-}nav { 
-	background-color: #000; 
-	padding: 10px; 
-	white-space: nowrap;}nav ul { 
-	margin: 0; 
-	padding: 0;}nav ul li { 
-	list-style-type: none; 
-	display: inline-block; 
-	padding: 0.2em 0;}nav ul li a { 
-	padding: 0 5px; 
-	font-weight: bold;} 
-nav ul li a:visited {
-	color: #fff;} 
-nav ul li a:hover {
-	text-decoration: underline;}
-.general{
-	text-align: center;
-}
-/* Sign up button */a.signup_button { 
-	margin-left: auto; 
-	margin-right: auto; 
-	display: block; 
-	text-align: center; 
-	width: 100px; 
-	color: #fff; 
-	background: #999999; 
-	font-size: 100%; 
-	font-weight: bold; 
-	padding: 20px;}
-/* Round corners */.round { 
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius:	10px;}
-
-/*Formato de los ERRORES*/
-.field_with_errors {
-	margin-top: 10px; 
-	padding: 2px; 
-	background-color: red; 
-	display: table;
-} 
-.field_with_errors label {
-	color: #fff;
-}
-
-#error_explanation { 
-	width: 400px; 
-	border: 2px solid red; 
-	padding: 7px; 
-	padding-bottom: 12px; 
-	margin-bottom: 20px; 
-	background-color: #f0f0f0;
-}
-#error_explanation h2 { 
-	text-align: left; 
-	font-weight: bold; 
-	padding: 5px 5px 5px 15px; 
-	font-size: 12px;
-	margin: -7px; 
-	background-color: #c00; 
-	color: #fff;
-}
-#error_explanation p { 
-	color: #333; 
-	margin-bottom: 0; 
-	padding: 5px;
-}
-#error_explanation ul li { 
-	font-size: 12px; 
-	list-style: square;
-}
-.arealogin{
-	font-size: 75%;
-	font-weight: bold;
-	font-style: italic;
-	text-align: right;
-}
-.arealogin a{
-		color: #000000;
-}
-.arearegistro a{
-		color: #000000;
-		font-size: 90%;
-}
-
-
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
-}
-
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
-}
-
-#mask {
-  position:absolute;
-  z-index:9000;
-  background-color:#000;
-  display:none;
-}
- 
-#boxes .window {
-  position:absolute;
-  width:440px;
-  height:200px;
-  display:none;
-  z-index:9999;
-  padding:20px;
-}
- 
- 
-/* Customize your modal window here, you can add background image too */
-#boxes #dialog {
-  width:375px;
-  height:203px;
-}
-
-#tabs{
-	font-size: 80%;
-	margin-bottom: 10px;
-}

@@ -1,0 +1,21 @@
+= builder.input :assessmentdate, :as=>:string,:label => 'F. Ev.'
+= builder.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
+= builder.collection_select :specialisttype_id, Specialisttype.all, :id,:name, :prompt => "Elija la especialidad"
+= builder.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
+=builder.input :medicalhistory, :label => "Antecedentes clín.: "
+=builder.input :reasonconsultation, :label => "Motivo consulta: "
+=builder.input :evaluation, :label => "Evaluación: "
+=builder.input :physiotherapistdiagnostic, :label => "Diagnósito Fisio: "
+=builder.input :treatment, :label => "Tratamiento: "
+=builder.input :medicaldiagnosic, :label => "Diagnóstico Méd.: "
+=builder.input :comments, :label => "Exámenes aux.: "
+=builder.input :code, :label => false, :readonly => 'true',:as=>"hidden"  # Codigo del historial
+=builder.input :id, :label =>false, :readonly => 'true' , :as=>"hidden"    #id del historial
+=builder.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => "Seleccione la procedencia"
+=builder.collection_select :rate_id, Rate.all, :id,:name, :prompt   => "Seleccione la tarifa"
+=builder.input :startdatetto, :as=>:string, :label => "F.Inicio tto" 
+=builder.input :enddatetto, :as=>:string, :label => "F.Fin tto" 
+=builder.input :nsessions, :label => "Sesiones: "
+=builder.input :authorization, :label =>'Nº Aut'
+=builder.input :expedient, :label => 'Nº Exp'
+=builder.input :authorizationcomments, :label=>'Observaciones'

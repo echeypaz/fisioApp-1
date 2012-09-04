@@ -1,0 +1,19 @@
+common: &common
+  company_name: "Nombre de empresa, S.L."
+  company_cif: "CIF Number"
+  pdf_repo_path: "documents"
+  pdf_logo: "app/assets/images/logo.jpeg"
+  taxes_percent: 5
+  
+production:
+  <<: *common
+
+development:
+  <<: *common
+
+staging:
+  <<: *common
+
+test:
+  <<: *common
+

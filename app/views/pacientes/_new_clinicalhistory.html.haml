@@ -1,0 +1,7 @@
+= simple_form_for resource, :url => update_clinicalhistory_pacientes_path(@paciente), :remote => request.xhr? do |f|
+  #prices.nested_form
+    %h3= resource.full_name
+    = f.simple_fields_for :clinicalhistories do |clinicalhistory|
+      = render 'clinicalhistory_fields', :builder => clinicalhistory
+    .links
+      = link_to_add_association I18n.t(:add), f, :prices

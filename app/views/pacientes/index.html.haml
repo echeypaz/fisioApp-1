@@ -1,3 +1,22 @@
-%b Ficha del paciente:
-= render 'search_paciente'
+- content_for :title, t(:pacientes)
+%div.action_list
+%table.list
+  %thead
+    %th.id= Paciente.human_attribute_name(:name)
+    %th.id= Paciente.human_attribute_name(:firstsurname)
+    %th.id= Paciente.human_attribute_name(:idtype_id)
+    %th.id= Paciente.human_attribute_name(:mobilephone)
+    %th.actions= t(:actions)
+  %tbody.items.pacientes
+    - collection.each do |resource|
+      = content_tag_for(:tr, resource, :class => cycle(:odd, :even)) do
+        %td.name= resource.try(:name)
+        %td.name= resource.try(:firstsurname)
+        %td.name= resource.try(:idtype_id)
+        %td.name= resource.try(:mobilephone)
+        %td.actions.ui-state-default
+          = link_to t(:show), resource_path(resource), :class => 'ui-icon ui-icon-search'
+          = link_to t(:edit), edit_resource_path(resource), :class => 'ui-icon ui-icon-pencil'
+          = link_to t(:destroy), resource_path(resource), :confirm => t(:are_you_sure?), :method => :delete, :class => 'ui-icon ui-icon-trash'
+= paginate collection
 

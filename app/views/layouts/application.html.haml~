@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title FisioApp
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+%body
+  #wrapper_all
+    #wrapper_head
+      - if user_signed_in?
+        #profile-menu
+          = render 'layouts/profile_menu'
+        = link_to logo
+      %h1.title
+        %span.fisio FISIO
+        %span APP
+    #wrapper_content
+      -if notice
+        %div.flash.notice= notice
+      -if alert
+        %div.flash.alert= alert
+      %h2
+        = yield :title
+      = yield
+    #wrapper_footer
+<!--        #version= t(:version_x, :version => FisioApp::VERSION)
+

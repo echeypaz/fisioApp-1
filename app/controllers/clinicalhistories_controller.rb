@@ -1,13 +1,4 @@
-class ClinicalhistoriesController < ApplicationController
-  # GET /clinicalhistories
-  # GET /clinicalhistories.xml
-  def index
-    @clinicalhistories = Clinicalhistory.page(params[:page])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clinicalhistories }
-    end
-  end
+class ClinicalhistoriesController < InheritedResources::Base
   # GET /clinicalhistories/1
   # GET /clinicalhistories/1.xml
   def show
@@ -97,10 +88,12 @@ class ClinicalhistoriesController < ApplicationController
         render :json => clinicalhistory
       end
     end
-
-    #respond_to do |format|
-    #  format.json { render :json => clinicalhistory.map {|clinicalhistory| [clinicalhistory.medicalhistory, clinicalhistory.reasonconsultation, clinicalhistory.evaluation, clinicalhistory.physiotherapistdiagnostic, clinicalhistory.assessmentdate, clinicalhistory.treatment, clinicalhistory.medicaldiagnosic, clinicalhistory.provenance_id, clinicalhistory.comments, clinicalhistory.startdatetto, clinicalhistory.rate_id, clinicalhistory.enddatetto, clinicalhistory.expedient, clinicalhistory.authorization, clinicalhistory.authorizationcomments, clinicalhistory.code] }.to_json }
-    #end
   end
   
+  respond_to :xml, :json
+  def collection
+    @search ||= end_of_association_chain
+    @clinicalhistories ||= @search.page(params[:page]).per(20)
+  end
+
 end
