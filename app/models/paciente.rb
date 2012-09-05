@@ -15,8 +15,8 @@ class Paciente < ActiveRecord::Base
     has_many :events, :dependent => :destroy
     belongs_to  :idtype
     
-    has_many :assets, :dependent => :destroy
-    accepts_nested_attributes_for :assets, :allow_destroy => true
+#TODO: PENDIENTE DE CREAR FICHEROS ADJUNTOS A LA FICHA:    has_many :assets, :dependent => :destroy
+#    accepts_nested_attributes_for :assets, :allow_destroy => true
 
     has_attached_file :photo
     accepts_nested_attributes_for :clinicalhistories, :allow_destroy => true  

@@ -27,7 +27,11 @@ FisioApp::Application.routes.draw do
   get 'tabs/autocomplete_paciente_secondsurname'
   get 'tabs/autocomplete_paciente_idcode'
 
-  resources :pacientes
+  resources :pacientes do
+    resources :clinialhistories
+    get :new_clinicalhistory, :on => :member
+  end
+  
   devise_for :users
   resources :tabs
   root :to => "pages#home"

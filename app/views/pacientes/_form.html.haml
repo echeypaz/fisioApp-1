@@ -6,7 +6,7 @@
     = f.input :name
     = f.input :firstsurname
     = f.input :secondsurname
-    = link_to (:photo), resource.photo.url
+    <!-- = link_to (:photo), resource.photo.url--!>
     = f.input :photo
     = f.input :profession
     = f.association :idtype , :label =>false , :include_blank => false
@@ -20,20 +20,21 @@
     = f.input :homephone
     = f.input :email
   %fieldset.clinicalhistories_list
-    %legend=t(:clinicalhistories_list)
-    = f.simple_fields_for :assets do |asset|
-      = render 'asset_fieds', :f => asset
-    .links
-      = link_to_add_association t(:add_product), f, :assets
+  <!-->    %legend=t(:clinicalhistories_list) --!>
+  <!--    = f.simple_fields_for :assets do |asset| --!>
+  <!--      = render 'asset_fieds', :f => asset --!>
+  <!--    .links --!>
+  <!-- = link_to_add_association t(:add_product), f, :assets --!>
   %fieldset.clinicalhistories_list
     %legend=t(:clinicalhistories_list)
-    %li= link_to t(:new_clinicalhistory), :controller => 'pacientes', :action => 'new_clinicalhistory'
+    <!-- %li= link_to t(:new_clinicalhistory), :controller => 'pacientes', :action => 'new_clinicalhistory'-->
     #paciente_clinicalhistory_list
       = show_for resource do |item|
         = item.association :clinicalhistories, :collection_tag => :ul do |c|
           %li= link_to t(c.assessmentdate), :controller => "pacientes", :action => "edit", :clinicalhistory => c
   %fieldset.clinicalhistories_data
     %legend=t(:clinicalhistories_data)
-    = simple_form_for @clinicalhistory do |detail|
-      = render 'clinicalhistory_fields', :builder => detail
+    = show_for resource do |i|
+      = i.association :clinicalhistories do |detail|
+        = render 'clinicalhistory_fields', :builder => detail
     = f.button :submit

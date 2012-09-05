@@ -47,7 +47,7 @@ gem 'haml-rails'
 
 gem 'rails3-jquery-autocomplete'
 
-#gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 3.0"
 
 
  gem 'nifty-generators'
