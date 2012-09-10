@@ -16,7 +16,7 @@
 body {
   @include reset-box-model;
   border-top: 5px solid $color1;
-  background-color: white; 
+  background: url("images/denim.png") repeat;
   color: #333;
 }
 h1 {
@@ -36,15 +36,14 @@ h1 {
 #wrapper_head,
 #wrapper_content,
 #wrapper_footer {
-  padding: 0.5em 0;
+  padding: 0.5em;
   overflow: hidden;
 }
 
 #wrapper_content {
+  border-radius: 10px 10px 10px 10px;
   padding: 0.5em;
-  background: rgba(white, 0.6);
-  //@include filter-gradient(#ffffff, #ffffff, vertical);
-  //@include background-image(linear-gradient(top,  rgba(255,255,255,0.7) 0%,rgba(255,255,255,0) 100%));
+  background: url("images/lil_fiber.png") repeat;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
 }
 
@@ -52,7 +51,7 @@ h1 {
   padding-top: 0;
   #logo {
     img {
-      padding-top:10px;
+      padding-top:0.5em;
       }
   }
   #profile-menu {
@@ -60,19 +59,15 @@ h1 {
       @include horizontal-list;
       float: right;
       li {
-        padding: 5px;
+        padding: 0.5em;
         background: url("images/ui-bg_glass_45_0078ae_1x400.png") repeat-x scroll 50% 50% #0078AE;
-        //@include border-radius(0 0 5px 5px);
         &:first-child {
-          padding: 5px;
           @include border-radius(0 0 0 5px);
         }
         &:last-child {
-          padding: 5px;
           @include border-radius(0 0 5px 0);
         }
         a {
-          padding: 0 5px;
           text-decoration: none;
           font-weight: bold;
           color: #fff;
