@@ -20,21 +20,14 @@
     = f.input :homephone
     = f.input :email
   %fieldset.clinicalhistories_list
-  <!-->    %legend=t(:clinicalhistories_list) --!>
-  <!--    = f.simple_fields_for :assets do |asset| --!>
-  <!--      = render 'asset_fieds', :f => asset --!>
-  <!--    .links --!>
-  <!-- = link_to_add_association t(:add_product), f, :assets --!>
-  %fieldset.clinicalhistories_list
     %legend=t(:clinicalhistories_list)
-    <!-- %li= link_to t(:new_clinicalhistory), :controller => 'pacientes', :action => 'new_clinicalhistory'-->
-    #paciente_clinicalhistory_list
-      = show_for resource do |item|
-        = item.association :clinicalhistories, :collection_tag => :ul do |c|
-          %li= link_to t(c.assessmentdate), :controller => "pacientes", :action => "edit", :clinicalhistory => c
-  %fieldset.clinicalhistories_data
-    %legend=t(:clinicalhistories_data)
-    = show_for resource do |i|
-      = i.association :clinicalhistories do |detail|
-        = render 'clinicalhistory_fields', :builder => detail
-    = f.button :submit
+    = link_to t(:add_new_clinicalhistory), :action => "new_clinicalhistory" unless resource.id.nil?
+    = show_for resource do |item|
+      = item.association :clinicalhistories, :collection_tag => :ul do |c|
+        %li= link_to t(c.assessmentdate), :controller => "pacientes", :action => "edit", :clinicalhistory => c
+  - if !@clinicalhistory.blank?
+    %fieldset.clinicalhistories_data
+      %legend=t(:clinicalhistories_data)
+      = simple_fields_for @clinicalhistory do |i|
+        = render 'clinicalhistory_fields', :f => i
+  = f.button :submit

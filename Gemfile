@@ -58,7 +58,7 @@ gem "paperclip", "~> 3.0"
 # gem "meta_search", '~> 3.0.2'
  
  group :development do
- #  gem 'debugger'
+   gem 'debugger'
    gem 'rspec-rails'
  end
  group :test do
