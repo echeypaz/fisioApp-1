@@ -36,13 +36,12 @@ h1 {
 #wrapper_head,
 #wrapper_content,
 #wrapper_footer {
-  padding: 0.5em;
   overflow: hidden;
 }
 
 #wrapper_content {
+  padding: 1.5em;
   border-radius: 10px 10px 10px 10px;
-  padding: 0.5em;
   background: url("images/lil_fiber.png") repeat;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
 }
@@ -71,6 +70,7 @@ h1 {
           text-decoration: none;
           font-weight: bold;
           color: #fff;
+          margin: 0px 10px;
           &:hover {
             color: $color2;
             background: none;
@@ -157,18 +157,29 @@ table.list {
   }
 }
 
+
 .simple_form {
   div.input {
     margin: 10px 0;
+    width: 45%;
+    input{
+      width: 55%;
+    }
+    label {
+      width: 40%;
+      display: block;
+      float: left;
+      text-align: right;
+      margin-right: 2%;
+      abbr {
+        color: $color2;
+      }
+    }
   }
-  label {
-    width: 20%;
-    display: block;
-    float: left;
-    text-align: right;
-    margin-right: 2%;
-    abbr {
-      color: $color2;
+  div#paciente_email {
+    width: 100%;
+    input#paciente_email{
+        width: 100%;
     }
   }
   div#actions_form {
@@ -176,6 +187,7 @@ table.list {
     clear: both;
   }
 }
+
 
 div.flash {
   width: 50%;
@@ -229,13 +241,16 @@ div.flash {
 }
 .nested_form, .history {
   overflow: hidden; 
-  width: 56%;
+  width: 100%;
   margin: 10px auto;
 }
 .history {
   table.list {
     width: 100%;
   }
+}
+.clear {
+  clear:both;
 }
 .nested_form {
   border-top: 1px dashed #ccc;
@@ -287,13 +302,6 @@ div.flash {
       background: none;
       color: $color2;
     }
-  }
-}
-
-#Product_line.nested-fields > div {
-  width:22%;
-  input, select {
-    width: 90%;  
   }
 }
 

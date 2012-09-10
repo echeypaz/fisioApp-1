@@ -2,23 +2,31 @@
   %div.errors
     = f.error_notification
   %fieldset.personal_data       
-    %legend= t(:personal_data)
-    = f.input :name
-    = f.input :firstsurname
-    = f.input :secondsurname
-    <!-- = link_to (:photo), resource.photo.url--!>
-    = f.input :photo
-    = f.input :profession
-    = f.association :idtype , :label =>false , :include_blank => false
-    = f.input :idcode
-    = f.input :birthdate, :as=>:string, :label => "F.Nac" 
-    #{@edad} años
-    = f.input :addres
-    = f.input :zip
-    = f.input :mobilephone
-    = f.input :familyphone
-    = f.input :homephone
-    = f.input :email
+    .nested-fields
+      %legend= t(:personal_data)
+      = f.input :name
+      = f.input :firstsurname
+      = f.input :secondsurname
+      .clear
+      = f.input :profession
+      .clear
+      = f.input :photo
+      .clear
+      = f.input :idcode
+      = f.association :idtype , :label =>false , :include_blank => false
+      .clear
+      = f.input :birthdate, :as=>:string, :label => "F.Nac" 
+      .age 
+        #{@edad} años
+      .clear
+      #paciente_addres= f.input :addres
+      .clear
+      = f.input :zip
+      = f.input :mobilephone
+      = f.input :familyphone
+      = f.input :homephone
+      .clear
+      #paciente_email= f.input :email
   %fieldset.clinicalhistories_list
     %legend=t(:clinicalhistories_list)
     = link_to t(:add_new_clinicalhistory), :action => "new_clinicalhistory" unless resource.id.nil?

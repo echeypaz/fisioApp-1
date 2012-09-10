@@ -1,8 +1,10 @@
 #Clinicalhistory.nested-fields
-  = f.input :assessmentdate, :as=>:string,:label => 'F. Ev.'
+  = f.input :assessmentdate
+  .clear
   = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
   = f.collection_select :specialisttype_id, Specialisttype.all, :id,:name, :prompt => "Elija la especialidad"
   = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
+  .clear
   = f.input :medicalhistory, :label => "Antecedentes clín.: "
   = f.input :reasonconsultation, :label => "Motivo consulta: "
   = f.input :evaluation, :label => "Evaluación: "
@@ -14,8 +16,10 @@
   = f.input :id, :label =>false, :readonly => 'true' , :as=>"hidden"    #id del historial
   = f.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => "Seleccione la procedencia"
   = f.collection_select :rate_id, Rate.all, :id,:name, :prompt   => "Seleccione la tarifa"
+  .clear
   = f.input :startdatetto, :as=>:string, :label => "F.Inicio tto" 
   = f.input :enddatetto, :as=>:string, :label => "F.Fin tto" 
   = f.input :nsessions, :label => "Sesiones: "
+  .clear
   = f.input :authorization, :label =>'Nº Aut'
   = f.input :expedient, :label => 'Nº Exp'
