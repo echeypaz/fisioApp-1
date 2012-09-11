@@ -1,4 +1,3 @@
-!!!
 %html
   %head
     %title FisioApp
@@ -11,8 +10,9 @@
       - if user_signed_in?
         #profile-menu
           = render 'layouts/profile_menu'
-        = link_to logo
-        %h1.title
+      #logo= link_to logo
+      #title
+        %h1
           %span.fisio FISIO
           %span.app APP
     #wrapper_content

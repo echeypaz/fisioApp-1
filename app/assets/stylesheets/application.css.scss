@@ -20,7 +20,6 @@ body {
   color: #333;
 }
 h1 {
-  clear: both;
   span.fisio {
     color: $color1;
   }
@@ -49,9 +48,11 @@ h1 {
 #wrapper_head {
   padding-top: 0;
   #logo {
+    width: 30%;
+    float: left;
     img {
       padding-top:0.5em;
-      }
+    }
   }
   #profile-menu {
     ul {
@@ -89,13 +90,13 @@ h1 {
   }
 }
 
-.personal_data, .clinicalhistories_data {
+.clinicalhistories_data{
 	width: 50%;
-	float: left;
+	float: right;
 }
 .clinicalhistories_list{
 	width: 40%;
-	float: right;
+	float: left;
 }
 
 table.list {
@@ -160,17 +161,16 @@ table.list {
 
 .simple_form {
   div.input {
-    margin: 10px 0;
-    width: 45%;
+    margin: 2px 10px;
     input{
-      width: 55%;
+      width: 200px;
     }
     label {
-      width: 40%;
+      width: 100px;
       display: block;
       float: left;
       text-align: right;
-      margin-right: 2%;
+      margin-right: 5px;
       abbr {
         color: $color2;
       }
@@ -204,6 +204,7 @@ div.flash {
     @include box-shadow(rgba($color1, 0.3) 0 0 4px);
   }
 }
+
 #sign_in {
   width: 50%;
   margin: 5px auto;
@@ -283,7 +284,6 @@ div.flash {
   width: 100%;
   & > div {
     float: left;
-    width: 30%;
     margin-right: 1%;
     label {
       display: block;

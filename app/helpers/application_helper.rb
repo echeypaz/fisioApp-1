@@ -2,7 +2,7 @@ module ApplicationHelper
   
   #Desde APPLICATION HELPER podremos acceder a estos helpers desde cualquier parte de la aplicación
   def logo
-    image_tag("logo.png", :alt => "Fisior")
+    image_tag("logo.png", :alt => "Usabi")
   end
   def logousabi
     image_tag("logousabismall.png", :alt => "Usabi, tu socio tecnologico")
