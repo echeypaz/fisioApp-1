@@ -1,6 +1,4 @@
 module ApplicationHelper
-  
-  #Desde APPLICATION HELPER podremos acceder a estos helpers desde cualquier parte de la aplicación
   def logo
     image_tag("logo.png", :alt => "Usabi")
   end
@@ -13,6 +11,9 @@ module ApplicationHelper
   def facturacion
     image_tag("menu/facturacion.png", :alt => "Facturacion")
   end
+  def paciente
+    image_tag("menu/paciente.png", :alt => "Listado de pacientes") + t(:paciente)
+  end
   def pacientes
     image_tag("menu/pacientes.png", :alt => "Ficha del paciente")
   end
@@ -21,19 +22,5 @@ module ApplicationHelper
   end
   def remove
     image_tag("icono/delete.png", :alt => "Borrar")
-  end
-  def fulltitle
-    base_title = "FisioApp, Fisioterapia Fisior Las palmas"
-    if @title.nil?
-      base_title
-    else
-      "#{base_title}|#{@title}"
-    end
-  end
-  
-  def toDate(date_text)
-    if !date_text.blank?
-      date_text = date_text
-    end
   end
 end

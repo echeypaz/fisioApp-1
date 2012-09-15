@@ -1,0 +1,8 @@
+NOTAS SOBRE LA APLICACIÓN:
+
+1- Tabla COUNTREFERENCES: se debe inicializar un registro para los pacientes, que tendrá la siguiente estructura:
+    id    name    value
+    1     P       0
+    
+    Se podrá ejecutar en consola: c = CountReferences.new
+    1.9.3p194 :008 > Countreference.create(:value => 0, :name => 'P')

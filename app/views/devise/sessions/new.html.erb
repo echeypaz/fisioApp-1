@@ -1,3 +1,4 @@
+<section class ="sign_in">
 <h2>Iniciar sesión</h2>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :email %><br />
@@ -7,11 +8,9 @@
   <%= f.password_field :password %></p>
 
   <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+    <p id= "remember_check"><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
+  <p class = "registro"><%= f.submit "Sign in" %></p>
 <% end %>
-<section class="arearegistro">
-	<%= render :partial => "devise/shared/links" %>
+<%= render :partial => "devise/shared/links" %>
 </section>

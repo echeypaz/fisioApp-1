@@ -15,7 +15,6 @@
         %td.name= resource.try(:idtype_id)
         %td.name= resource.try(:mobilephone)
         %td.actions.ui-state-default
-          = link_to t(:show), resource_path(resource), :class => 'ui-icon ui-icon-search'
           = link_to t(:edit), edit_resource_path(resource), :class => 'ui-icon ui-icon-pencil'
           = link_to t(:destroy), resource_path(resource), :confirm => t(:are_you_sure?), :method => :delete, :class => 'ui-icon ui-icon-trash'
 = paginate collection

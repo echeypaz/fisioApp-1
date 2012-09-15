@@ -1,25 +1,28 @@
 #Clinicalhistory.nested-fields
-  = f.input :assessmentdate
-  .clear
+  #alone= f.input :assessmentdate
   = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
   = f.collection_select :specialisttype_id, Specialisttype.all, :id,:name, :prompt => "Elija la especialidad"
   = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
-  .clear
-  = f.input :medicalhistory, :label => "Antecedentes clín.: "
-  = f.input :reasonconsultation, :label => "Motivo consulta: "
-  = f.input :evaluation, :label => "Evaluación: "
-  = f.input :physiotherapistdiagnostic, :label => "Diagnósito Fisio: "
-  = f.input :treatment, :label => "Tratamiento: "
-  = f.input :medicaldiagnosic, :label => "Diagnóstico Méd.: "
-  = f.input :comments, :label => "Exámenes aux.: "
+  #alone
+    = f.input :medicalhistory,:as => :text 
+    = f.input :reasonconsultation,  :as=> :text 
+    = f.input :evaluation,  :as=> :text 
+  = f.input :physiotherapistdiagnostic,  :as=> :text 
+  = f.input :treatment,  :as=> :text 
+  = f.input :medicaldiagnosic,  :as=> :text 
   = f.input :code, :label => false, :readonly => 'true',:as=>"hidden"  # Codigo del historial
   = f.input :id, :label =>false, :readonly => 'true' , :as=>"hidden"    #id del historial
-  = f.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => "Seleccione la procedencia"
-  = f.collection_select :rate_id, Rate.all, :id,:name, :prompt   => "Seleccione la tarifa"
-  .clear
-  = f.input :startdatetto, :as=>:string, :label => "F.Inicio tto" 
-  = f.input :enddatetto, :as=>:string, :label => "F.Fin tto" 
-  = f.input :nsessions, :label => "Sesiones: "
-  .clear
-  = f.input :authorization, :label =>'Nº Aut'
-  = f.input :expedient, :label => 'Nº Exp'
+  #alone
+    = f.input :startdatetto, :as=>:string 
+    = f.input :enddatetto, :as=>:string
+    = f.input :nsessions 
+  #alone
+    .data_company= f.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => t(:provenance)
+    .data_company=  f.collection_select :rate_id, Rate.all, :id,:name, :prompt   => t(:rates)
+    .data_company= t(:authorization) 
+    .data_company= f.input :authorization, :label => false
+    .data_company= t(:expedient)
+    .data_company= f.input :expedient, :label => false
+  #alone
+    = f.input :comments, :as=> :text 
+

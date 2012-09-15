@@ -10,11 +10,12 @@
       - if user_signed_in?
         #profile-menu
           = render 'layouts/profile_menu'
-      #logo= link_to logo
+      #logo
       #title
         %h1
           %span.fisio FISIO
           %span.app APP
+          %span.descripcion Gestión integral de pacientes
     #wrapper_content
       -if notice
         %div.flash.notice= notice

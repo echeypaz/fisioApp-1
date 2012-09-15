@@ -8,6 +8,12 @@
 //= require cocoon
 
 $(function (){  
+  $(".slidingDiv").hide();
+  $(".show_hide").show();
+  $('.show_hide').click(function(){
+    $(".slidingDiv").slideToggle();
+  });
+
     $('#paciente_birthdate').datepicker({ dateFormat: 'yy-mm-dd' , changeYear: true,yearRange: '1950:2010'});
     $('#clinicalhistory_assessmentdate').datepicker({ dateFormat: 'dd-mm-yy' });
     $('#clinicalhistory_startdatetto').datepicker({ dateFormat: 'dd-mm-yy' });

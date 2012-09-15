@@ -1,5 +1,27 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 es:
-  pacientes: "Pacientes"
+  edit: "Editar "
+  new: "Nuevo "
+  show: "Detalle"
+  devise:
+    sessions:
+      signed_in: 'Sesión iniciada correctamente'
+  activerecord:
+    models:
+      user: "Usuario"
+      paciente: "Paciente"
+      event: "Cita"
+    attributes:
+      user:
+        login: "Usuario"
+        password: "Contraseña"
+      paciente:
+        name: "Nombre"
+        firstsurname: "1er apellido"
+        secondsurname: "2do apellido"
+  
+  pacientes: "Listado de pacientes"
   events: "Citas"
   invoicehead: "Facturación"
   date:
