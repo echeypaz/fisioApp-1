@@ -1,44 +1,24 @@
-%table.izquierda
-  %tr
-    %td
-      %b Buscador de pacientes (nombre, apellidos o dni)
-    %td.mediano= autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
-    %td
-      = text_field_tag :search_paciente_id, '',:hidden => true
-
-      %button{:onClick => "buscar_paciente()"}
-        Buscar 
+%b Buscador de pacientes (nombre, apellidos o dni)
+= autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
+= text_field_tag :search_paciente_id, '',:hidden => true
+%button{:onClick => "buscar_paciente()"}Buscar 
 = simple_form_for @event do |f|
-  %fieldset.izquierda
-    %legend Datos de la cita
-    = render "shared/error_messages", :target => @event
-    %table
-      %tr
-        %td= f.input :name, :label => 'Nombre'
-        %td= f.input :firstsurname, :label => 'Apellido 1'
-        %td
-          = f.input :secondsurname, :label => 'Apellido 2'
-          = text_field_tag :id, '' ,:READONLY => true, :hidden=>'true'
-
-      %tr  
-        %td
-          = label_tag 'Día'
-          = text_field_tag :dia, '', :id_element =>'dia',:READONLY => true
-        %td
-          = label_tag 'Hora'
-          = text_field_tag :hora, '', :id_element =>'hora',:READONLY => true
-          = f.input :starts_at, :as=>:string, :as=>:hidden, :label => false 
-        %td
-          = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
-          = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
-    
-      %tr
-        %td= f.input :attended, :label => "Confirmado", :input_html => { :disabled => 'true' }
-        %td.mediano{:colspan=>"2"}= f.input :description, :label=>"Observaciones"    
-    = submit_tag 'Nueva Cita'
-    
-    
-    
+  %legend Datos de la cita
+  = render "shared/error_messages", :target => @event
+  = f.input :name, :label => 'Nombre'
+  = f.input :firstsurname, :label => 'Apellido 1'
+  = f.input :secondsurname, :label => 'Apellido 2'
+  = text_field_tag :id, '' ,:READONLY => true, :hidden=>'true'
+  = label_tag 'Día'
+  = text_field_tag :dia, '', :id_element =>'dia',:READONLY => true
+  = label_tag 'Hora'
+  = text_field_tag :hora, '', :id_element =>'hora',:READONLY => true
+  = f.input :starts_at, :as=>:string, :as=>:hidden, :label => false 
+  = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
+  = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
+  = f.input :attended, :label => "Confirmado", :input_html => { :disabled => 'true' }
+  = f.input :description, :label=>"Observaciones"    
+  = submit_tag 'Nueva Cita'
 %button{:onClick => "confirmar_cita()"} Confirmar asistencia
 %button{:onClick => "eliminar_cita()"} Eliminar cita
 

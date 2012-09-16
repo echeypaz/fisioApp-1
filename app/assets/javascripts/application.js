@@ -49,6 +49,19 @@ $(function (){
    		return false;
     });
                 
-                
+$('#calendar').fullCalendar({
+        // put your options and callbacks here
+  defaultView: 'agendaWeek',  
+  firstHour : '9',
+  minTime: '9',
+  maxTime: '22',
+  header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'resourceDay,month,agendaWeek,agendaDay'
+            },
+    editable: true,
+})       
+
 
 });

@@ -1,11 +1,11 @@
 /*
- * FullCalendar v1.5.1 Stylesheet
+ * FullCalendar v1.5.4 Stylesheet
  *
  * Copyright (c) 2011 Adam Shaw
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Sat Apr 9 14:09:51 2011 -0700
+ * Date: Tue Sep 4 23:38:33 2012 -0700
  *
  */
 
@@ -13,7 +13,8 @@
 .fc {
 	direction: ltr;
 	text-align: left;
-	}
+        margin: 15px 0;
+      }
 	
 .fc table {
 	border-collapse: collapse;
@@ -22,7 +23,7 @@
 	
 html .fc,
 .fc table {
-	font-size: .8em;
+	font-size: 1em;
 	}
 	
 .fc td,
@@ -261,7 +262,7 @@ html .fc,
 .fc-event {
 	border-style: solid;
 	border-width: 0;
-	font-size: .75em;
+	font-size: .85em;
 	cursor: default;
 	}
 	
