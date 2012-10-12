@@ -1,19 +1,16 @@
-%h1 Listing specialisttypes
+- content_for :title, t(:pacientes)
+%div.action_list
+  = link_to 'New Specialisttype', new_resource_path
+%table.list
+  %thead
+    %th= Specialisttype.human_attribute_name(:name)
+    %th.actions= t(:actions)
+  %tbody.items
+    - collection.each do |resource|
+      = content_tag_for(:tr, resource, :class => cycle(:odd, :even)) do
+        %td= resource.try(:name)
+        %td.actions.ui-satate-default
+          = link_to 'Show', resource
+          = link_to 'Edit', edit_resource_path(resource)
+          = link_to 'Destroy', resource, :confirm => 'Are you sure?', :method => :delete
 
-%table
-  %tr
-    %th String
-    %th
-    %th
-    %th
-
-  - @specialisttypes.each do |specialisttype|
-    %tr
-      %td= specialisttype.string
-      %td= link_to 'Show', specialisttype
-      %td= link_to 'Edit', edit_specialisttype_path(specialisttype)
-      %td= link_to 'Destroy', specialisttype, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Specialisttype', new_specialisttype_path

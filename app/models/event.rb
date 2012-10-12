@@ -1,27 +1,3 @@
-# == Schema Information
-# Schema version: 20110822134819
-#
-# Table name: events
-#
-#  id                 :integer         not null, primary key
-#  title              :string(255)
-#  starts_at          :datetime
-#  ends_at            :datetime
-#  all_day            :boolean
-#  description        :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  center_id          :integer
-#  specialist_id      :integer
-#  attended           :boolean
-#  paciente_id        :integer
-#  invoiceline_id     :integer
-#  clinicalhistory_id :integer
-#  name               :string(255)
-#  firstsurname       :string(255)
-#  secondsurname      :string(255)
-#
-
 class Event < ActiveRecord::Base
   attr_accessible   :starts_at, :ends_at, :all_day, :description, :center_id, :specialist_id, :paciente_id,:attended, :invoiceline_id, :clinicalhistory, 
                     :name, :firstsurname, :secondsurname
@@ -31,7 +7,7 @@ class Event < ActiveRecord::Base
   belongs_to  :paciente
   has_one     :invoiceline
   belongs_to  :clinicalhistory
-  validates :specialist_id, :center_id,:starts_at, :name, :firstsurname, :secondsurname, :presence => true
+  validates :specialist_id, :center_id, :name, :firstsurname, :secondsurname, :presence => true
   
   
   before_create  :set_default_parameters
@@ -66,7 +42,7 @@ class Event < ActiveRecord::Base
   def set_default_parameters
       self.title = "#{self.name} #{self.firstsurname} #{self.secondsurname}"
       self.description = "#{self.specialist.name}, #{self.center.name}"
-      self.ends_at = self.starts_at + 1
+  #    self.ends_at = self.starts_at + 1
   end
 
 end

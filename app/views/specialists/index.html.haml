@@ -1,25 +1,27 @@
-%h1 Listing specialists
-
-%table
-  %tr
-    %th Nombre
-    %th Teléfono Principal
-    %th Teléfono Secundario
-    %th Email
-    %th
-    %th
-    %th
-
-  - @specialists.each do |specialist|
-    %tr
-      %td= specialist.name
-      %td= specialist.phone1
-      %td= specialist.phone2
-      %td= specialist.email
-      %td= link_to 'Show', specialist
-      %td= link_to 'Edit', edit_specialist_path(specialist)
-      %td= link_to 'Destroy', specialist, :confirm => 'Are you sure?', :method => :delete
+- content_for :title, t(:specialists)
+%div.action_list
+  = link_to 'Crear un nuevo especialista', new_specialist_path
+%table.list
+  %thead
+    %th.id= Specialist.human_attribute_name(:name)
+    %th.id= Specialist.human_attribute_name(:phone1)
+    %th.id= Specialist.human_attribute_name(:phone2)
+    %th.id= Specialist.human_attribute_name(:email)
+    %th.id= Specialist.human_attribute_name(:specialistype_id)
+    %th.actions= t(:actions)
+  %tbody.items.pacientes
+    - collection.each do |resource|
+      = content_tag_for(:tr, resource, :class => cycle(:odd, :even)) do
+        %td= resource.try(:name)
+        %td= resource.try(:phone1)
+        %td= resource.try(:phone2)
+        %td= resource.try(:email)
+        %td= resource.specialisttype.name
+        %td.actions.ui-state-default
+          = link_to 'Show', resource, :class => 'ui-icon ui-icon-zoomin'
+          = link_to 'Edit', edit_resource_path(resource), :class => 'ui-icon ui-icon-pencil'
+          = link_to 'Destroy', resource, :confirm => 'Are you sure?', :method => :delete, :class => 'ui-icon ui-icon-trash'
+          = link_to :events, events_path, :class => 'ui-icon ui-icon-calendar'
 
 %br
 
-= link_to 'Crear un nuevo especialista', new_specialist_path
