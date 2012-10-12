@@ -1,8 +1,10 @@
 %h1 Bienvenido a FisioApp!
-.general
-  =link_to pacientes, new_paciente_path
-  =link_to citas, :controller => "events", :action => "index"
-  =link_to facturacion, new_invoicehead_path
-  =link_to informes, "http://fisior.es"
-
+.row-fluid
+  .span4
+    =link_to pacientes, new_paciente_path
+    =link_to citas, :controller => "events", :action => "index"
+    =link_to facturacion, new_invoicehead_path
+    =link_to informes, "http://fisior.es"
+  .span8
+    CALENDARIO DE DÍA DEL ESPECIALISTA
 

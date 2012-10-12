@@ -14,13 +14,10 @@
 
 
 body {
-  @include reset-box-model;
   border-top: 5px solid $color1;
-  background: url("images/denim.png") repeat;
-  color: #333;
-  font-family: verdana;
-  font: bold 15px Arial,Helvetica;
+  background: url("denim.png") repeat;
 }
+
 h1 {
   span.fisio {
     color: $color1;
@@ -36,86 +33,16 @@ h1 {
   }
 }
 
-h2:after {
-    background: -moz-linear-gradient(left center , rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, #7EB544 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%) repeat scroll 0 0 transparent;
-    content: " ";
-    display: block;
-    height: 2px;
-    margin-top: 0px;
-    width: 100%;
-}
-h2 {
-    color: #7EB544;
-    font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 2px 0 0px;
-    text-align: center;
-}
-
-#wrapper_all {
-
-  width: 80%;
-  margin: 0 auto;
-}
-#wrapper_head,
-#wrapper_content,
-#wrapper_footer {
-  overflow: hidden;
-}
-
 #wrapper_content {
   padding: 0px 1.5em;
   border-radius: 10px 10px 10px 10px;
-  background: url("images/lil_fiber.png") repeat;
+  background-color: white;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
 }
 
-#wrapper_head {
-  padding-top: 0;
-  #logo {
-    float: left;
-    margin-right: 1%;
-    img {
-      padding-top:0.5em;
-    }
-  }
-  #profile-menu {
-    ul {
-      @include horizontal-list;
-      float: right;
-      li {
-        line-height: 60px;
-        padding: 0.5em;
-        background: url("images/ui-bg_glass_45_0078ae_1x400.png") repeat-x scroll 50% 50% #0078AE;
-        &:first-child {
-          @include border-radius(0 0 0 5px);
-        }
-        &:last-child {
-          @include border-radius(0 0 5px 0);
-        }
-        a {
-          text-decoration: none;
-          font-weight: bold;
-          color: #fff;
-          margin: 0px 15px;
-          &:hover {
-            color: $color2;
-            background: none;
-          }
-        }
-      }
-    }
-  }
-}
 
-#wrapper_footer {
-  #version {
-    margin: 0.5em 0;
-    text-align: right;
-    color: #aaa;
-  }
-}
+
+
 
 .clinicalhistories_data{
 	width: 64%;
@@ -132,7 +59,7 @@ table.list {
   border-collapse: collapse;
   //table-layout: fixed;
   th {
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid $color2;
     text-align: left;
     font-weight: bold;
   }

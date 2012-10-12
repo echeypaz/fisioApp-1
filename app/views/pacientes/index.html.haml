@@ -1,6 +1,5 @@
 - content_for :title, t(:pacientes)
-%div.action_list
-%table.list
+%table.list.table-hover
   %thead
     %th.id= Paciente.human_attribute_name(:name)
     %th.id= Paciente.human_attribute_name(:firstsurname)
@@ -14,8 +13,8 @@
         %td.name= resource.try(:firstsurname)
         %td.name= resource.try(:idtype_id)
         %td.name= resource.try(:mobilephone)
-        %td.actions.ui-state-default
-          = link_to t(:edit), edit_resource_path(resource), :class => 'ui-icon ui-icon-pencil'
-          = link_to t(:destroy), resource_path(resource), :confirm => t(:are_you_sure?), :method => :delete, :class => 'ui-icon ui-icon-trash'
+        %td
+          = link_to('', edit_resource_path(resource),:class =>'icon-pencil')
+          = link_to "", resource_path(resource), :class =>'icon-remove', :confirm => t(:are_you_sure?), :method => :delete
 = paginate collection
 
