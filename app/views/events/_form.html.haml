@@ -1,26 +1,32 @@
-%b Buscador de pacientes (nombre, apellidos o dni)
-= autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
-= text_field_tag :search_paciente_id, '',:hidden => true
-%button{:onClick => "buscar_paciente()"}Buscar 
-= simple_form_for @event do |f|
+%fieldset
   %legend Datos de la cita
-  = render "shared/error_messages", :target => @event
-  = f.input :name, :label => 'Nombre'
-  = f.input :firstsurname, :label => 'Apellido 1'
-  = f.input :secondsurname, :label => 'Apellido 2'
-  = text_field_tag :id, '' ,:READONLY => true, :hidden=>'true'
-  = label_tag 'Día'
-  = text_field_tag :dia, '', :id_element =>'dia',:READONLY => true
-  = label_tag 'Hora'
-  = text_field_tag :hora, '', :id_element =>'hora',:READONLY => true
-  = f.input :starts_at, :as=>:string, :as=>:hidden, :label => false 
-  = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
-  = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
-  = f.input :attended, :label => "Confirmado", :input_html => { :disabled => 'true' }
-  = f.input :description, :label=>"Observaciones"    
-  = submit_tag 'Nueva Cita'
-%button{:onClick => "confirmar_cita()"} Confirmar asistencia
-%button{:onClick => "eliminar_cita()"} Eliminar cita
+  %b Buscador de pacientes (nombre, apellidos o dni)
+  = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
+  = text_field_tag :search_paciente_id, '',:hidden => true
+  %button{:onClick => "buscar_paciente()"}Buscar 
+  #event
+    = simple_form_for @event do |f|
+      = render "shared/error_messages", :target => @event
+      #alone
+        = f.input :name, :label => 'Nombre'
+        = f.input :firstsurname, :label => 'Apellido 1'
+        = f.input :secondsurname, :label => 'Apellido 2'
+      #alone
+        <!--= text_field_tag :id, '' ,:READONLY => true, :input_html => {:hidden=>'true'}-->
+        = label_tag 'Día'
+        = text_field_tag :dia, '', :id_element =>'dia'
+        = label_tag 'Hora'
+        = text_field_tag :hora, '', :id_element =>'hora'
+        = f.association :center 
+        = f.association :specialist, :label=> false, :prompt=> t(:specialist)
+        = f.input :attended
+      #alone
+      #event_description
+        = f.input :description, :as => :text    
+      #alone
+        = f.submit 'Nueva Cita'
+    %button{:onClick => "confirmar_cita()"} Confirmar asistencia
+    %button{:onClick => "eliminar_cita()"} Eliminar cita
 
 :javascript
   function buscar_paciente(){

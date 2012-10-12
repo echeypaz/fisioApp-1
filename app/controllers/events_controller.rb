@@ -1,6 +1,4 @@
 class EventsController < ApplicationController
-  # GET /events
-  # GET /events.xml
   def index   
     # full_calendar will hit the index method with query parameters
     # 'start' and 'end' in order to filter the results for the

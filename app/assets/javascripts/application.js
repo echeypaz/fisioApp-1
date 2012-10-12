@@ -2,11 +2,11 @@
 // This file is automatically included by javascript_include_tag :defaults
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_self
 //= require_tree .
 //= require chosen-jquery
 //= require cocoon
-
 $(function (){  
   $(".slidingDiv").hide();
   $(".show_hide").show();
@@ -30,6 +30,7 @@ $(function (){
            	});
            	return false;
        });   
+    
     $("#clinicalhistory_specialisttype_id").change(function() {
     	var provenance = $('#clinicalhistory_specialisttype_id');
         $.getJSON('/clinicalhistories/update_specialist/' + provenance.val() || "0", function(specialists) {
@@ -40,28 +41,6 @@ $(function (){
            	});
            	return false;
        });  
-       
-    $("#paciente_fullname").change(function(){
-    	var paciente_fullname = $("#paciente_fullname");
-   		if(paciente_fullname = ""){
-   			$("#search_client_id").val("");
-   		}
-   		return false;
-    });
-                
-$('#calendar').fullCalendar({
-        // put your options and callbacks here
-  defaultView: 'agendaWeek',  
-  firstHour : '9',
-  minTime: '9',
-  maxTime: '22',
-  header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'resourceDay,month,agendaWeek,agendaDay'
-            },
-    editable: true,
-})       
-
+    $( "#tabs" ).tabs();
 
 });

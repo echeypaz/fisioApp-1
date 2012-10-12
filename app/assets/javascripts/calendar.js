@@ -5,30 +5,27 @@ $(document).ready(function() {
 	var m = date.getMonth();
 	var y = date.getFullYear();
 	
-						
-	
 	$('#calendar').fullCalendar({
-		editable: true,        
-		header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
+	    editable: true,
+	    header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,agendaWeek,agendaDay'
+            },
         defaultView: 'agendaWeek',
         height: 500,
-        slotMinutes: 30,
         minTime:9,
-        maxTime:21,
+        maxTime:22,
         defaultEventMinutes:60,
         firstDay:1,
         theme:true,        
         
-        loading: function(bool){
-            if (bool) 
-                $('#loading').show();
-            else 
-                $('#loading').hide();
-        },
+       // loading: function(bool){
+       //     if (bool) 
+       //         $('#loading').show();
+       //     else 
+       //         $('#loading').hide();
+       // },
         
         // a future calendar might have many sources. 
         events: function(start, end, callback) {
@@ -46,7 +43,7 @@ $(document).ready(function() {
 	                callback(response);
 	            }
 	        });
-	    },
+	},
         /*eventSources: [{
             url: '/events',
             color: 'yellow',
@@ -62,13 +59,28 @@ $(document).ready(function() {
         monthNamesShort:['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul','Ago','Sept','Oct','Nov','Dic'],
         allDaySlot: false,
 
-        timeFormat: 'h:mm t{ - h:mm t} ',
         dragOpacity: "0.5",
         
-        //http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
-        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc){
-            updateEvent(event);
+        dayClick: function(date, allDay, jsEvent, view){
+          //captura los datos de fecha en inputs de tipo hidden
+          dia = $.fullCalendar.formatDate(date, 'ddd ,yyyy-MM-dd' );
+          $("#dia").val(dia);
+          $("#hora").val($.fullCalendar.formatDate(date, 'HH:mm' ));
+          $("#event_starts_at").val(date);
+         
+          alert(date);
+          //Mostrar el formulario
         },
+        //Mostramos la información que queramos del evento en el calendario.
+        //eventRender: function(event, element) { 
+          //             element.find('.fc-event-title').append("<br/><b>" + event.description); 
+            //         },
+
+
+        //http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
+      //  eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc){
+      //      updateEvent(event);
+      //  },
 
         // http://arshaw.com/fullcalendar/docs/event_ui/eventResize/
         eventResize: function(event, dayDelta, minuteDelta, revertFunc){
@@ -78,9 +90,9 @@ $(document).ready(function() {
         // http://arshaw.com/fullcalendar/docs/mouse/eventClick/
         eventClick: function(event, jsEvent, view){
           // would like a lightbox here.
-          	dia = $.fullCalendar.formatDate(event.start, 'ddd ,yyyy-MM-dd' );
-         	$("#dia").val(dia);
-         	$("#hora").val($.fullCalendar.formatDate(event.start, 'HH:mm' ));
+            dia = $.fullCalendar.formatDate(event.start, 'ddd ,yyyy-MM-dd' );
+            $("#dia").val(dia);
+            $("#hora").val($.fullCalendar.formatDate(event.start, 'HH:mm' ));
             $("#event_center_id").val(event.center_id);
             $("#event_specialist_id").val(event.specialist_id);
             if (event.attended ==true){
@@ -89,30 +101,14 @@ $(document).ready(function() {
             	$("#event_attended").attr('checked', false);}
             $("#id").val(event.id);
             var paciente_id = event.paciente_id;
-	       	$.getJSON('/events/' + paciente_id + '/info', function(result) {
-       			for(key in result.paciente)
+	    $.getJSON('/events/' + paciente_id + '/info', function(result) {
+       	      	for(key in result.paciente)
           		$("#event_" + key).val(result.paciente[key]);
     		});
     		
 			//Mostrar el formulario
         	return false;
         },
-        
-        dayClick: function(date, allDay, jsEvent, view){
-			//captura los datos de fecha en inputs de tipo hidden
-			
-         	dia = $.fullCalendar.formatDate(date, 'ddd ,yyyy-MM-dd' );
-         	$("#dia").val(dia);
-         	$("#hora").val($.fullCalendar.formatDate(date, 'HH:mm' ));
-            $("#event_starts_at").val(date);
-
-			//Mostrar el formulario
-		},
-		//Mostramos la información que queramos del evento en el calendario.
-		eventRender: function(event, element) { 
-            element.find('.fc-event-title').append("<br/><b>" + event.description); 
-       },
-
 	});
 });
 

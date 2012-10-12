@@ -6,11 +6,5 @@
   #tabs1
     = render :partial => 'search_event'
   #tabs2
-    .cabecera
-      = render :partial =>'events/form'
-
+    = render :partial =>'events/form'
 #calendar
-:javascript
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
