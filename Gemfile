@@ -34,6 +34,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
+  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
  
 gem 'haml-rails'
@@ -44,6 +45,7 @@ gem 'haml-rails'
  gem 'devise', '=1.5.2'
  gem 'cancan'
  gem 'cocoon'
+
 
 gem 'rails3-jquery-autocomplete'
 
