@@ -16,6 +16,7 @@ es:
       user:
         login: "Usuario"
         password: "Contraseña"
+        email: "Email"
       paciente:
         name: "Nombre"
         firstsurname: "1er apellido"
