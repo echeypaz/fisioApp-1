@@ -5,7 +5,7 @@
     %td{:width =>'200px'}
       = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_client_id',:size => 50
     %td
-      %button{:onClick => "edit_paciente()"}
+      %button.btn.btn-primary{:onClick => "edit_paciente()"}
         Buscar 
   
 :javascript

@@ -38,13 +38,13 @@ group :assets do
 end
  
 gem 'haml-rails'
- gem 'chosen-rails'
- gem 'kaminari'
- gem 'simple_form'
- gem 'show_for'
- gem 'devise', '=1.5.2'
- gem 'cancan'
- gem 'cocoon'
+gem 'chosen-rails'
+gem 'kaminari'
+gem 'simple_form'
+gem 'show_for'
+gem 'devise', '=1.5.2'
+gem 'cancan'
+gem 'cocoon'
 
 
 gem 'rails3-jquery-autocomplete'

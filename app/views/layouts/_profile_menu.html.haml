@@ -17,4 +17,4 @@
               %li= link_to t(:adios), '#'
           %li= link_to t(:events)  , Event
           %li= link_to t(:invoicehead),  new_invoicehead_path
-          %li= link_to t(:close_session), destroy_user_session_path
+          %li= link_to t(:close_session), destroy_user_session_path, :method => :delete
