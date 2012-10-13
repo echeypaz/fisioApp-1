@@ -1,10 +1,16 @@
-%h1 Bienvenido a FisioApp!
-.row-fluid
-  .span4
-    =link_to pacientes, new_paciente_path
-    =link_to citas, :controller => "events", :action => "index"
-    =link_to facturacion, new_invoicehead_path
-    =link_to informes, "http://fisior.es"
-  .span8
-    CALENDARIO DE DÍA DEL ESPECIALISTA
+- content_for :title, t(:welcome)
+.span2
+  = image_tag("menu/icono_pacientes.png")
+  = link_to t(:pacientes), pacientes_path
+  = image_tag("menu/icono_pacientes.png")
+  = link_to t(:new_paciente), new_paciente_path, :class => 'btn btn-success'
+.span2
+  = image_tag("menu/icono_pacientes.png")
+  =link_to t(:events), events_path, :class => 'btn btn-warning'
+  = image_tag("menu/icono_pacientes.png")
+  =link_to t(:invoice), new_invoicehead_path, :class => 'btn btn-danger'
+  = image_tag("menu/icono_pacientes.png")
+  =link_to t(:reports), "http://fisior.es", :class => 'btn btn-info'
+.span7
+  CALENDARIO DE DÍA DEL ESPECIALISTA
 

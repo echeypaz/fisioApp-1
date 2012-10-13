@@ -14,7 +14,7 @@
         %td.name= resource.try(:idtype_id)
         %td.name= resource.try(:mobilephone)
         %td
-          = link_to('', edit_resource_path(resource),:class =>'icon-pencil')
-          = link_to "", resource_path(resource), :class =>'icon-remove', :confirm => t(:are_you_sure?), :method => :delete
+          = link_to t(:edit), edit_resource_path(resource), :class => "btn"
+          = link_to t(:delete), resource_path(resource), :class =>'btn btn-danger', :confirm => t(:are_you_sure?), :method => :delete
 = paginate collection
 

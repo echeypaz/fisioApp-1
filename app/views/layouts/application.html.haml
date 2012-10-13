@@ -23,7 +23,7 @@
       %div.flash.alert= alert
     -if !:title.blank?
       %h2= yield :title
-    = yield
+    .container= yield
   #wrapper_footer
 <!--        #version= t(:version_x, :version => FisioApp::VERSION)
 

@@ -1,8 +1,0 @@
-%Welcome!
-= form_for @tab,:method => 'get' do |f|
-  =f.label :paciente_name
-  =f.autocomplete_field :paciente_name, tabs_autocomplete_paciente_name_path, :id_element => '#search'
-  =f.text_field :search, :id=> 'search', :type=>"hidden" 
-  =submit_tag "Buscar", :name => nil
-  
-=render 'pacientes/formc' unless !@paciente.blank?

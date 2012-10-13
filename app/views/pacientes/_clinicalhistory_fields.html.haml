@@ -1,28 +1,20 @@
-#Clinicalhistory.nested-fields
-  #alone= f.input :assessmentdate
-  = f.association :center, :label => false, :collection => Center.all(:order => 'name'), :prompt => "Elija el centro"
-  = f.collection_select :specialisttype_id, Specialisttype.all, :id,:name, :prompt => "Elija la especialidad"
-  = f.collection_select :specialist_id, Specialist.all, :id,:name, :prompt => "Elija el especialista"
-  #alone
-    = f.input :medicalhistory,:as => :text 
-    = f.input :reasonconsultation,  :as=> :text 
-    = f.input :evaluation,  :as=> :text 
-  = f.input :physiotherapistdiagnostic,  :as=> :text 
-  = f.input :treatment,  :as=> :text 
-  = f.input :medicaldiagnosic,  :as=> :text 
-  = f.input :code, :label => false, :readonly => 'true',:as=>"hidden"  # Codigo del historial
-  = f.input :id, :label =>false, :readonly => 'true' , :as=>"hidden"    #id del historial
-  #alone
-    = f.input :startdatetto, :as=>:string 
-    = f.input :enddatetto, :as=>:string
-    = f.input :nsessions 
-  #alone
-    .data_company= f.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => t(:provenance)
-    .data_company=  f.collection_select :rate_id, Rate.all, :id,:name, :prompt   => t(:rates)
-    .data_company= t(:authorization) 
-    .data_company= f.input :authorization, :label => false
-    .data_company= t(:expedient)
-    .data_company= f.input :expedient, :label => false
-  #alone
-    = f.input :comments, :as=> :text 
-
+.span6= f.input :assessmentdate, :input_html => {:class => 'span2'}
+.span2= f.association :center, :collection => Center.all(:order => 'name'), :input_html => {:class => 'span2'}
+.span2= f.association :specialisttype, :collection => Specialisttype.all, :input_html => {:class => 'span2'}
+.span2= f.association :specialist, :conllection => Specialist.all, :input_html => {:class => 'span2'}
+.span6= f.input :medicalhistory, :input_html => {:class => 'span6'}
+.span2= f.input :reasonconsultation, :as=> :text, :input_html => { :rows => '3',:class => 'span2'}
+.span2= f.input :evaluation,  :as=> :text, :input_html => { :rows => '3', :class => 'span2'}
+.span2= f.input :physiotherapistdiagnostic,  :as=> :text, :input_html => { :rows => '3', :class => 'span2'}
+.span6= f.input :treatment, :input_html => { :class => 'span6'}
+.span6= f.input :medicaldiagnosic, :input_html => { :class => 'span6'}
+= f.input :code, :label => false, :readonly => 'true',:as=>"hidden"  # Codigo del historial
+= f.input :id, :label =>false, :readonly => 'true' , :as=>"hidden"    #id del historial
+.span2= f.input :startdatetto, :as=>:string, :input_html => {:class => 'span2'} 
+.span2= f.input :enddatetto, :as=>:string, :input_html => {:class => 'span2'}
+.span1= f.input :nsessions, :input_html => {:class => 'input-small'} 
+.span3= f.collection_select :provenance_id, Provenance.all, :id,:name, :prompt => t(:provenance)
+.span3=  f.collection_select :rate_id, Rate.all, :id,:name, :prompt   => t(:rates)
+.span1= f.input :authorization, :input_html => {:class => 'span1'}
+.span1= f.input :expedient, :input_html => {:class => 'span1'}
+.span4= f.input :comments, :input_html => {:class => 'span4'}

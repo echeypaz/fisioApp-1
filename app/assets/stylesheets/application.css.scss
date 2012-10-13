@@ -33,24 +33,15 @@ h1 {
   }
 }
 
+i.icon:before{
+  content: none;
+}
+
 #wrapper_content {
   padding: 0px 1.5em;
   border-radius: 10px 10px 10px 10px;
   background-color: white;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
-}
-
-
-
-
-
-.clinicalhistories_data{
-	width: 64%;
-	float: right;
-}
-.clinicalhistories_list{
-	width: 30%;
-	float: left;
 }
 
 table.list {
@@ -87,13 +78,6 @@ table.list {
   }
 }
 
-.actions_list {
-  float: right;
-  a {
-    margin: 3px;
-  }
-}
-
 
 div.flash {
   width: 50%;
@@ -111,56 +95,6 @@ div.flash {
   }
 }
 
-input#clinicalhistory_nsessions {
-  width:115px;
-}
-
-textarea:focus, input:focus, input[type="file"]:focus {
-    background-color: #eee;
-    border-color: #7EB543;
-    box-shadow: 0 0 0 1px #7EB543 inset;
-    outline: medium none;
-    font-size:13px;
-}
-div#alone{
-  clear: both;
-  width: 100%;
-  #input{
-   width: 100%;
-  }
-}
-
-.nested_form, .history {
-  overflow: hidden; 
-  width: 100%;
-  margin: 10px auto;
-}
-
-.clear {
-  clear:both;
-}
-.nested_form {
-  border-top: 1px dashed #ccc;
-  padding: 1em 0;
-  .links {
-    clear: both;
-    padding-top: 1em;
-    text-align: right;
-}
-a.add_fields {
-  font-weight: bold;
-  color: $color2;
-}
-}
-.ui-dialog-content .nested_form {
-  width: auto;
-  a.remove_fields {
-    width: 90px;
-    margin-top: -45px;
-    font-size: 0.8em;
-    text-align: center;
-  }
-}
 
 div#event{
   div.input{
@@ -174,46 +108,7 @@ div#event{
     width: 85px;
   } 
 }
-div#Clinicalhistory{
-  div.input{
-    width: 30%;
-    float:left;
-    label{
-      clear:both;
-    }
-  }
-  div.data_company{
-    width: 16%;
-    float: left;
-    text-align: right;
-    margin: 10px 0px 0px -5px; 
-    input{
-      width: 100px;
-    }
-  }
-  textarea#clinicalhistory_comments{
-    width: 320%;
-  }
 
-}
-
-.nested-fields {
-  border-bottom: 1px dotted #ddd;
-  // «Alternative to overflow:hidden for div «auto» height
-  display: table;
-  width: 100%;
-  & > div {
-    float: left;
-    margin-right: 1%;
-    label {
-      display: block;
-      float: none;
-      width: auto;
-      margin-bottom: 5px;
-      text-align: left;
-  }
-}
-}
 
 .errors {
   width: 50%;
@@ -240,18 +135,14 @@ fieldset.fieldset{
   border-radius: 10px 10px 10px 10px;
   box-shadow: 3px 4px 6px #808080;
   padding: 1em 2em;
+  margin-top: 1em;
+  margin-left: 1em;
 }
-legend {
+legend.legend {
   font-weight:bold;
+  margin-bottom: 0px;
 }
 
-ul.collection{
-  margin-left: -35px;
-}
-.slidingDiv {
-    height:210px;
-}
- 
 .show_hide {
     display:none;
 }

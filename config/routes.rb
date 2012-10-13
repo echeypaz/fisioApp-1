@@ -21,21 +21,15 @@ FisioApp::Application.routes.draw do
 
   resources :clinicalhistories
 
-
-  get 'tabs/autocomplete_paciente_fullname'
-  get 'tabs/autocomplete_paciente_firstsurname'
-  get 'tabs/autocomplete_paciente_secondsurname'
-  get 'tabs/autocomplete_paciente_idcode'
-
   resources :pacientes do
     resources :clinialhistories
     get :new_clinicalhistory, :on => :member
   end
   
   devise_for :users
-  resources :tabs
+  
   root :to => "pages#home"
-  match 'tabs' => 'tabs#index'
+  
   match 'clinicalhistories' => 'clinicalhistories#show'
   
   match 'clinicalhistories/update_rate_select/:id', :controller=>'clinicalhistories', :action => 'update_rate_select'

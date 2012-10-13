@@ -1,13 +1,12 @@
-%b Buscador de pacientes (nombre, apellidos o dni)
-%table.izquierda
-  %tr
-    %td= text_field_tag 'search_client_id', '',:type=>"hidden",:placeholder => ""
-    %td{:width =>'200px'}
-      = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_client_id',:size => 50
-    %td
-      %button.btn.btn-primary{:onClick => "edit_paciente()"}
-        Buscar 
-  
+.form-search
+  = label_tag t(:search_paciente)
+  = text_field_tag 'search_client_id', '',:type=>"hidden",:placeholder => ""
+  .input-prepend
+    %span.add-on
+      %i.icon-search.icon
+    = autocomplete_field_tag 'paciente_fullname', '',:id_element => '#search_client_id',:size => 50, :class => 'input-big search-query span2'
+  %button.btn{:onClick => "edit_paciente()"} Buscar 
+
 :javascript
   function edit_paciente(){
     var paciente_id = $("#search_client_id").val();

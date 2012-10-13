@@ -3,10 +3,14 @@
 es:
   edit: "Editar "
   new: "Nuevo "
-  show: "Detalle"
-  devise:
-    sessions:
-      signed_in: 'Sesión iniciada correctamente'
+  new_paciente: "Nuevo paciente"
+  show: "Más info"
+  delete: "Borrar"
+  sign_in: "Iniciar"
+  home: "Mi inicio"
+  welcome: "Bienvenido a FisioApp"
+  are_you_sure?: "¿Está usted seguro?"
+  search_paciente: "Buscador de pacientes (nombre, apellidos o dni)"
   activerecord:
     models:
       user: "Usuario"

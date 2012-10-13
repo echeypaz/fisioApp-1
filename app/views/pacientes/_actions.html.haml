@@ -1,5 +1,5 @@
-.actions_list
-  .button= link_to t(:new), new_resource_path 
-  .button= link_to t(:add_new_clinicalhistory), :action => "new_clinicalhistory" unless resource.id.nil?
-  .button= link_to t(:back), pacientes_path
-  .button= link_to(t(:destroy), resource_path(resource), :method => :delete, :confirm => "Are you sure?")
+.btn-toolbar
+  .btn= link_to t(:new), new_resource_path 
+  .btn= link_to t(:add_new_clinicalhistory), :action => "new_clinicalhistory" unless resource.id.nil?
+  .btn= link_to t(:back), pacientes_path
+  .btn= link_to(t(:destroy), resource_path(resource), :method => :delete, :confirm => "Are you sure?")
