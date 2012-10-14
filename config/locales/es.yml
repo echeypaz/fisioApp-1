@@ -7,7 +7,18 @@ es:
   devise:
     sessions:
       signed_in: 'Sesión iniciada correctamente'
+  errors:
+    messages:
+      not_saved: 'No salvado'
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: 'confirmación'
+            email:
+              taken: 'ocupado'
     models:
       user: "Usuario"
       paciente: "Paciente"
