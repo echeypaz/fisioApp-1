@@ -47,14 +47,12 @@ gem 'cancan'
 gem 'cocoon'
 
 
-gem 'rails3-jquery-autocomplete'
 
 gem "paperclip", "~> 3.0"
 
-
- gem 'nifty-generators'
- gem 'jquery-rails' 
- gem 'inherited_resources'
+gem 'jquery-rails'  
+gem 'nifty-generators'
+gem 'inherited_resources'
 
 # gem "meta_where"
 # gem "meta_search", '~> 3.0.2'

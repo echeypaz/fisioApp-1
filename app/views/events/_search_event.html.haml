@@ -2,10 +2,7 @@
   = label_tag 'Nombre, apellildos o dni'
   = text_field_tag :search_client_id, '',:type=>"hidden"
   = label_tag "Especialista"
-  = grouped_collection_select(:specialist, :specialist_id, @specialisttypes, :specialist, :name, :id, :name,:include_blank=>true)
   = label_tag "Centro"
-  = select_tag(:center_id, options_from_collection_for_select(@centers, 'id', 'name'), :include_blank=>true)
-
   %button{:onClick => '$("#calendar").fullCalendar("refetchEvents")'}
     Buscar 
 

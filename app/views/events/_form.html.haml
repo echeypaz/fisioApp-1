@@ -1,7 +1,7 @@
 %fieldset
-  %legend Datos de la cita
+  %legend t(:event)
   %b Buscador de pacientes (nombre, apellidos o dni)
-  = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
+  <!--= autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id' -->
   = text_field_tag :search_paciente_id, '',:hidden => true
   %button{:onClick => "buscar_paciente()"}Buscar 
   #event

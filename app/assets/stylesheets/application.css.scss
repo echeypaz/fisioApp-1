@@ -38,7 +38,7 @@ i.icon:before{
 }
 
 #wrapper_content {
-  padding: 0px 1.5em;
+  padding: 0px 1.5em 1em;
   border-radius: 10px 10px 10px 10px;
   background-color: white;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
@@ -135,8 +135,7 @@ fieldset.fieldset{
   border-radius: 10px 10px 10px 10px;
   box-shadow: 3px 4px 6px #808080;
   padding: 1em 2em;
-  margin-top: 1em;
-  margin-left: 1em;
+  margin: 1em;
 }
 legend.legend {
   font-weight:bold;

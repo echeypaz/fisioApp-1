@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
 
   create_table "centers", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "clinicalhistories", :force => true do |t|
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.integer  "nsessions"
     t.integer  "frequency"
     t.string   "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "paciente_id"
     t.integer  "code"
     t.string   "expedient"
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
   create_table "countreferences", :force => true do |t|
     t.string   "name"
     t.integer  "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.datetime "ends_at"
     t.boolean  "all_day"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "center_id"
     t.integer  "specialist_id"
     t.boolean  "attended"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
 
   create_table "idtypes", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "invoiceheads", :force => true do |t|
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.string   "firstsurname"
     t.string   "secondsurname"
     t.string   "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "paciente_id"
     t.integer  "code"
   end
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.float    "price"
     t.float    "total"
     t.integer  "invoicehead_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.date     "treatmentdate"
   end
 
@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.string   "idcode"
     t.string   "profession"
     t.string   "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "birthdate"
     t.integer  "mobilephone"
     t.integer  "familyphone"
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
   create_table "provenances", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rates", :force => true do |t|
@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.integer  "sessions"
     t.float    "rate"
     t.integer  "provenance_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "specialists", :force => true do |t|
@@ -157,20 +157,20 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.string   "email"
     t.integer  "phone1"
     t.integer  "phone2"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "specialisttype_id"
   end
 
   create_table "specialisttypes", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tabs", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.text     "paciente_firstsurname"
   end
 
@@ -185,8 +185,8 @@ ActiveRecord::Schema.define(:version => 20120728151533) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
