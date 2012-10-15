@@ -1,16 +1,18 @@
-<section class ="sign_in">
-<h2>Iniciar sesión</h2>
+<div class="row">
+<div class ="offset4 span4">
+  <legend>Iniciar sesión</legend>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <span class= "help-block "> Inserte su dirección de mail. Ejemplo direccionmail@usabi.es</span>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <span class= "help-block"> Inserte su contraseña.</span>
   <% if devise_mapping.rememberable? -%>
-    <p id= "remember_check"><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
-  <p class = "registro"><%= f.submit "Sign in" %></p>
+  <%= f.submit t(:sign_in) , :class =>"btn"%>
 <% end %>
 <%= render :partial => "devise/shared/links" %>
-</section>
+</div>
+</div>

@@ -3,11 +3,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery-ui
+//= require autocomplete-rails
 //= require_self
 //= require_tree .
 //= require chosen-jquery
 //= require cocoon
 $(function (){  
+
   $(".slidingDiv").hide();
   $(".show_hide").show();
   $('.show_hide').click(function(){

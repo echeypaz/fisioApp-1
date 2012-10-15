@@ -9,16 +9,24 @@ es:
       signed_in: 'Sesión iniciada correctamente'
   errors:
     messages:
-      not_saved: 'No salvado'
+      not_saved: "No salvado"
+  new_paciente: "Nuevo paciente"
+  show: "Más info"
+  delete: "Borrar"
+  sign_in: "Iniciar"
+  home: "Mi inicio"
+  welcome: "Bienvenido a FisioApp"
+  are_you_sure?: "¿Está usted seguro?"
+  search_paciente: "Buscador de pacientes (nombre, apellidos o dni)"
   activerecord:
     errors:
       models:
         user:
           attributes:
             password:
-              confirmation: 'confirmación'
+              confirmation: "confirmación"
             email:
-              taken: 'ocupado'
+              taken: "ocupado"
     models:
       user: "Usuario"
       paciente: "Paciente"

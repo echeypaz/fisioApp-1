@@ -1,43 +1,39 @@
-= simple_form_for resource , :html => { :multipart => true } do |f|
-  %div.errors
-    = f.error_notification
-  %fieldset.fieldset1 
-    %legend=t(:paciente)
-    %a.show_hide{:href=>"#"}= t(:show)
-    .slidingDiv
-      .nested-fields
-        = f.input :name
-        = f.input :firstsurname
-        = f.input :secondsurname
-        .clear
-        = f.input :profession
-        = f.input :photo
-        .clear
-        = f.input :idcode
-        = f.association :idtype , :label =>false , :include_blank => false
-        = f.input :birthdate, :as=>:string, :label => "F.Nac" 
-        .input 
-          #{@edad} años
-        .clear
-        #paciente_addres= f.input :addres
-        #paciente_zip= f.input :zip
-        .clear
-        = f.input :mobilephone
-        = f.input :familyphone
-        = f.input :homephone
-        .clear
-        #paciente_email= f.input :email
-  - if !@clinicalhistory.blank?
-    %fieldset.clinicalhistories_list
-      %legend=t(:clinicalhistories_list)
-      = show_for resource do |item|
-        = item.association :clinicalhistories, :collection_tag => :ul do |c|
-          %li
-            = link_to t(c.assessmentdate), :controller => "pacientes", :action => "edit", :clinicalhistory => c
-            = c.reasonconsultation
-            = c.specialist
-    %fieldset.clinicalhistories_data
-      %legend=t(:clinicalhistories_data)
-      = simple_fields_for @clinicalhistory do |i|
-        = render 'clinicalhistory_fields', :f => i
-    = f.button :submit
+.form
+  = simple_form_for resource , :html => { :multipart => true } do |f|
+    %div.errors
+      = f.error_notification
+    %fieldset.fieldset.span11 
+      %legend.legend=t(:paciente)
+      %a.btn.btn-info.btn-mini.show_hide{:href=>"#"}= t(:show)
+      .controls.controls-row
+        .span3= f.input :name, :input_html => {:class => "span3"}
+        .span3= f.input :firstsurname, :input_html => {:class => "span3"}
+        .span3= f.input :secondsurname, :input_html => {:class => "span3"}
+        .span1= f.input :birthdate, :as=>:string, :label => "F.Nac", :input_html=>{:class=>'input-small'}
+        = #{@edad} años
+        .slidingDiv
+          .span2= f.input :profession, :input_html => {:class => "span2"}
+          .span4= f.input :photo
+          .span2= f.input :idcode, :input_html => {:class => "span2"}
+          .span1= f.association :idtype , :include_blank => false, :input_html =>{:class => "span1"}
+          .span2= f.input :mobilephone, :input_html => {:class => "span2"}
+          .span2= f.input :familyphone, :input_html => {:class => "span2"}
+          .span2= f.input :homephone, :input_html => {:class => "span2"}
+          .span4= f.input :addres, :input_html => {:class => "span4"}
+          .span2= f.input :zip,:input_html => {:class => "span2"}
+          .span4= f.input :email,:input_html => {:class => "span4"} 
+    - if !@clinicalhistory.blank?
+      %fieldset.fieldset.span3
+        %legend.legend=t(:clinicalhistories_list)
+        = show_for resource do |item|
+          = item.association :clinicalhistories, :collection_tag => :ul do |c|
+            %li
+              = link_to t(c.assessmentdate), :controller => "pacientes", :action => "edit", :clinicalhistory => c
+              = c.reasonconsultation
+              = c.specialist
+      %fieldset.fieldset.span7
+        %legend.legend=t(:clinicalhistories_data)
+        = simple_fields_for @clinicalhistory do |i|
+          .form= render 'clinicalhistory_fields', :f => i
+      = f.button :submit, :class => 'btn'
+

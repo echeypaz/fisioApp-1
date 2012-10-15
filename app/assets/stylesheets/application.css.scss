@@ -14,13 +14,10 @@
 
 
 body {
-  @include reset-box-model;
   border-top: 5px solid $color1;
-  background: url("images/denim.png") repeat;
-  color: #333;
-  font-family: verdana;
-  font: bold 15px Arial,Helvetica;
+  background: url("denim.png") repeat;
 }
+
 h1 {
   span.fisio {
     color: $color1;
@@ -36,94 +33,15 @@ h1 {
   }
 }
 
-h2:after {
-    background: -moz-linear-gradient(left center , rgba(147, 184, 189, 0) 0%, rgba(147, 184, 189, 0.8) 20%, #7EB544 53%, rgba(147, 184, 189, 0.8) 79%, rgba(147, 184, 189, 0) 100%) repeat scroll 0 0 transparent;
-    content: " ";
-    display: block;
-    height: 2px;
-    margin-top: 0px;
-    width: 100%;
-}
-h2 {
-    color: #7EB544;
-    font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 2px 0 0px;
-    text-align: center;
-}
-
-#wrapper_all {
-
-  width: 80%;
-  margin: 0 auto;
-}
-#wrapper_head,
-#wrapper_content,
-#wrapper_footer {
-  overflow: hidden;
+i.icon:before{
+  content: none;
 }
 
 #wrapper_content {
   padding: 0px 1.5em;
   border-radius: 10px 10px 10px 10px;
-  background: url("images/lil_fiber.png") repeat;
+  background-color: white;
   @include box-shadow(rgba(black, 0.6) 0 0 5px);
-}
-
-#wrapper_head {
-  padding-top: 0;
-  #logo {
-    float: left;
-    margin-right: 1%;
-    img {
-      padding-top:0.5em;
-    }
-  }
-  #profile-menu {
-    ul {
-      @include horizontal-list;
-      float: right;
-      li {
-        line-height: 60px;
-        padding: 0.5em;
-        background: url("images/ui-bg_glass_45_0078ae_1x400.png") repeat-x scroll 50% 50% #0078AE;
-        &:first-child {
-          @include border-radius(0 0 0 5px);
-        }
-        &:last-child {
-          @include border-radius(0 0 5px 0);
-        }
-        a {
-          text-decoration: none;
-          font-weight: bold;
-          color: #fff;
-          margin: 0px 15px;
-          &:hover {
-            color: $color2;
-            background: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-#wrapper_footer {
-  #version {
-    margin: 0.5em 0;
-    text-align: right;
-    color: #aaa;
-  }
-}
-
-.clinicalhistories_data{
-	width: 64%;
-	float: right;
-}
-.clinicalhistories_list{
-	width: 30%;
-	float: left;
 }
 
 table.list {
@@ -132,7 +50,7 @@ table.list {
   border-collapse: collapse;
   //table-layout: fixed;
   th {
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid $color2;
     text-align: left;
     font-weight: bold;
   }
@@ -160,49 +78,6 @@ table.list {
   }
 }
 
-.actions_list {
-  float: right;
-  a {
-    margin: 3px;
-  }
-}
-
-
-.simple_form {
-  div.input {
-    margin: 2px 10px;
-    input{
-      width: 200px;
-    }
-    label {
-      width: 115px;
-      display: block;
-      float: left;
-      text-align: right;
-      margin-right: 5px;
-      abbr {
-        color: $color2;
-      }
-    }
-  }
-  div#paciente_zip{
-    width: 30%;
-    input#paciente_zip{
-        width: 30%;
-    }
-  }
-  div#paciente_email, div#paciente_addres {
-    width: 68%;
-    input#paciente_email, input#paciente_addres{
-        width: 83%;
-    }
-  }
-  div#actions_form {
-    margin-left: 22%;
-    clear: both;
-  }
-}
-
 
 div.flash {
   width: 50%;
@@ -220,140 +95,6 @@ div.flash {
   }
 }
 
-#remember_check{
-  label{
-    font-size: 11px;
-  }
-}
-.arearegistro{
-  a{
-    font-size: 11px;}
-}
-input#clinicalhistory_nsessions {
-  width:115px;
-}
-
-textarea:focus, input:focus, input[type="file"]:focus {
-    background-color: #eee;
-    border-color: #7EB543;
-    box-shadow: 0 0 0 1px #7EB543 inset;
-    outline: medium none;
-    font-size:13px;
-}
-input[type="submit"], .button{
-  display: inline;
-  background-color: $color2;
-  background-image: -moz-linear-gradient(center top , #b2ff5e, #51752b);
-  border-color: #b2ff5e #7eb543 #51752b;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-  cursor: pointer;
-  height: 30px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  width: 120px;
-}
-input[type="submit"]:hover, input[type="submit"]:focus , .button:hover, .button:focus{
-    background-color: #51752b;
-    background-image: -moz-linear-gradient(center top , #51752b, #b2ff5e);
-    border-color: #51752b #7eb543 #b2ff5e;  
-}
-div#alone{
-  clear: both;
-  width: 100%;
-  #input{
-   width: 100%;
-  }
-}
-select, textarea, input, .button{
-  border: 1px solid #CCCCCC;
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: 0 1px 1px #CCCCCC inset, 0 1px 0 #FFFFFF;
-  margin: 0 0 5px;
-  padding: 5px 5px 5px 5px;
-  font-family: lucida grande;
-  font-size: 11px;
-  display: inline-block;
-  &.button {
-    width: auto;
-    margin-top: 10px;
-  }
-}
-.button{
-  height: 20px;
-  span{
-    color:#333333;
-  }
-}
-textarea{
-  height: 50px;
-  width: 100%;
-}
-
-.sign_in, #sign_up, #change_password, #forgot_password{
-  width: 30%;
-  margin: auto 33% 20px;
-  #user_remember_me{
-    width: 6%;
-  }
-}
-p.registro{
-  width: 50%;
-}
-ul{
-  list-style: none outside none;
-}
-
-#search {
-  width: 90%;
-  margin: 1em auto;
-  border-bottom: 1px dashed #CCCCCC;
-  padding: 0.5em 0.5em 1em;
-  text-align: center;
-  input.type-text {
-    width: 150px;
-    margin-right: 0.5em;
-    border: 1px solid #CCC;
-    padding: 2px;
-    font-weight: bold;
-    color: #555;
-    &:focus {
-      border: 1px solid #ff6600;
-      color: #ff6600;
-  }
-}
-}
-.nested_form, .history {
-  overflow: hidden; 
-  width: 100%;
-  margin: 10px auto;
-}
-
-.clear {
-  clear:both;
-}
-.nested_form {
-  border-top: 1px dashed #ccc;
-  padding: 1em 0;
-  .links {
-    clear: both;
-    padding-top: 1em;
-    text-align: right;
-}
-a.add_fields {
-  font-weight: bold;
-  color: $color2;
-}
-}
-.ui-dialog-content .nested_form {
-  width: auto;
-  a.remove_fields {
-    width: 90px;
-    margin-top: -45px;
-    font-size: 0.8em;
-    text-align: center;
-  }
-}
 
 div#event{
   div.input{
@@ -367,79 +108,7 @@ div#event{
     width: 85px;
   } 
 }
-div#Clinicalhistory{
-  div.input{
-    width: 30%;
-    float:left;
-    label{
-      clear:both;
-    }
-  }
-  div.data_company{
-    width: 16%;
-    float: left;
-    text-align: right;
-    margin: 10px 0px 0px -5px; 
-    input{
-      width: 100px;
-    }
-  }
-  textarea#clinicalhistory_comments{
-    width: 320%;
-  }
 
-}
-
-.nested-fields {
-  border-bottom: 1px dotted #ddd;
-  // «Alternative to overflow:hidden for div «auto» height
-  display: table;
-  width: 100%;
-  & > div {
-    float: left;
-    margin-right: 1%;
-    label {
-      display: block;
-      float: none;
-      width: auto;
-      margin-bottom: 5px;
-      text-align: left;
-  }
-}
-a.remove-action {
-  display: block;
-  float: right;
-  width: 10%;
-  margin: 20px 0 0;
-  &:hover {
-    background: none;
-    color: $color2;
-  }
-}
-}
-
-.ajax-chzn {
-  min-width: 200px;
-}
-.chzn-container .chzn-results .highlighted {
-  background: #FF6600;
-}
-.clearfix {
-  clear:both;
-}
-.ui-dialog-content span.hint {
-  display: block;
-  margin-left: 22%;
-  font-size: 0.85em;
-  color: #aaa;
-}
-.ui-dialog-content h3 {
-  width: 90%;
-  margin: 10px auto;
-}
-.ui-dialog-content .simple_form input {
-  width: 55%;
-}
 
 .errors {
   width: 50%;
@@ -450,6 +119,7 @@ a.remove-action {
   color: #cc0000;
 
 }
+
 span.error {
   display: block;
   margin: 0.5em auto;
@@ -460,36 +130,19 @@ span.error {
   color: #B94A48;
 }
 
-.ajax_chosen_load_spinner {
-  display: none;
-  float: left;
-  width: 16px;
-  height: 16px;
-  margin-left: 10px;
-  margin-top: 4px;
-  background: url(ajax-load.gif) no-repeat;
-}
-
-fieldset{
+fieldset.fieldset{
   border: medium none;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 3px 4px 6px #808080;
-  margin-top: 10px;
+  padding: 1em 2em;
+  margin-top: 1em;
+  margin-left: 1em;
 }
-legend {
-text-align:center;
-font-weight:bold;
-font-size:18pt;
-color:$color2;
+legend.legend {
+  font-weight:bold;
+  margin-bottom: 0px;
 }
 
-ul.collection{
-  margin-left: -35px;
-}
-.slidingDiv {
-    height:210px;
-}
- 
 .show_hide {
     display:none;
 }

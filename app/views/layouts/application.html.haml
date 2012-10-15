@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 %html
   %head
     %title FisioApp
@@ -5,25 +6,24 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 %body
-  #container-fluid
-    #span9
-      - if user_signed_in?
-        #profile-menu
-          = render 'layouts/profile_menu'
+  %header
+    .container-fluid
       #logo
       #title
         %h1
           %span.fisio FISIO
           %span.app APP
           %span.descripcion Gestión integral de pacientes
-    #wrapper_content
-      -if notice
-        %div.flash.notice= notice
-      -if alert
-        %div.flash.alert= alert
-      -if !:title.blank?
-        %h2= yield :title
-      = yield
-    #wrapper_footer
+  - if user_signed_in?
+    = render 'layouts/profile_menu'
+  #wrapper_content.container
+    -if notice
+      %div.flash.notice= notice
+    -if alert
+      %div.flash.alert= alert
+    -if !:title.blank?
+      %h2= yield :title
+    .container= yield
+  #wrapper_footer
 <!--        #version= t(:version_x, :version => FisioApp::VERSION)
 
