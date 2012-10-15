@@ -1,41 +1,27 @@
-%fieldset
-  %legend Datos de la cita
-  %b Buscador de pacientes (nombre, apellidos o dni)
-  = autocomplete_field_tag 'paciente_fullname', '', tabs_autocomplete_paciente_fullname_path,:id_element => '#search_paciente_id'
-  = text_field_tag :search_paciente_id, '',:hidden => true
-  %button{:onClick => "buscar_paciente()"}Buscar 
-  #event
-    = simple_form_for @event do |f|
-      = render "shared/error_messages", :target => @event
-      #alone
-        = f.input :name, :label => 'Nombre'
-        = f.input :firstsurname, :label => 'Apellido 1'
-        = f.input :secondsurname, :label => 'Apellido 2'
-      #alone
-        <!--= text_field_tag :id, '' ,:READONLY => true, :input_html => {:hidden=>'true'}-->
+%fieldset.fielset
+  %legend.legend t(:event)
+  #event.form
+    = simple_form_for resource do |f|
+      .errors
+        = f.error_notification
+      .span12= f.association :paciente, :class => "chzn-select"
+      .span3= f.input :name
+      .span3= f.input :firstsurname
+      .span5= f.input :secondsurname
+      .span3
         = label_tag 'Día'
-        = text_field_tag :dia, '', :id_element =>'dia'
+        = text_field_tag :dia, '', :id_element =>'dia', :class => "span3"
+      .span1
         = label_tag 'Hora'
-        = text_field_tag :hora, '', :id_element =>'hora'
-        = f.association :center 
-        = f.association :specialist, :label=> false, :prompt=> t(:specialist)
-        = f.input :attended
-      #alone
-      #event_description
-        = f.input :description, :as => :text    
-      #alone
-        = f.submit 'Nueva Cita'
-    %button{:onClick => "confirmar_cita()"} Confirmar asistencia
-    %button{:onClick => "eliminar_cita()"} Eliminar cita
-
+        = text_field_tag :hora, '', :id_element =>'hora', :class => "span1"
+      .span3= f.association :center,:class => "chzn-select"
+      .span5= f.association :specialist, :prompt=> t(:specialist), :class => "chzn-select"
+      .span12= f.input :description,  :as=> :text, :input_html => { :rows => '3', :class => 'span5'}
+      .span6
+        = f.submit t(:new)
+        %button{:onClick => "confirmar_cita()"} Confirmar asistencia
+        %button{:onClick => "eliminar_cita()"} Eliminar cita
 :javascript
-  function buscar_paciente(){
-    var paciente_id = $("#search_paciente_id").val();
-    $.getJSON('/events/' + paciente_id + '/info', function(result) {
-       for(key in result.paciente)
-          $("#event_" + key).val(result.paciente[key]);
-    });
-  }
   function confirmar_cita(){
     var event_id = $("#id").val();
     $.getJSON('/events/' + event_id + '/confirm', function(result) {
