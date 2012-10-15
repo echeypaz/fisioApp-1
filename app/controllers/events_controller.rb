@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < InheritedResources::Base
   def index   
     # full_calendar will hit the index method with query parameters
     # 'start' and 'end' in order to filter the results for the
@@ -19,8 +19,6 @@ class EventsController < ApplicationController
       @events = @events.where(:specialist_id => params['specialist_id']) 
     end
         
-    @specialisttypes = Specialisttype.all
-    @centers = Center.all    
     @event = Event.new
     respond_to do |format|
       format.html 
@@ -127,5 +125,4 @@ class EventsController < ApplicationController
       end
     end
   end
-  
 end

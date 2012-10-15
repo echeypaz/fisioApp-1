@@ -67,9 +67,6 @@ alert('Ha habido un error al buscar las citas, contacte con soporte!');
           $("#dia").val(dia);
           $("#hora").val($.fullCalendar.formatDate(date, 'HH:mm' ));
           $("#event_starts_at").val(date);
-         
-          alert(date);
-          //Mostrar el formulario
         },
         //Mostramos la información que queramos del evento en el calendario.
         //eventRender: function(event, element) {

@@ -12,7 +12,6 @@
 @import "compass/reset/utilities";
 @import "common.css.scss";
 
-
 body {
   border-top: 5px solid $color1;
   background: url("denim.png") repeat;
@@ -94,21 +93,6 @@ div.flash {
     @include box-shadow(rgba($color1, 0.3) 0 0 4px);
   }
 }
-
-
-div#event{
-  div.input{
-    float:left;
-    margin-right: 7px;
-  }
-  #event_attended{
-    width: 10%;
-  }
- label{
-    width: 85px;
-  } 
-}
-
 
 .errors {
   width: 50%;

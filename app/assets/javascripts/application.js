@@ -7,9 +7,16 @@
 //= require twitter/bootstrap
 //= require_self
 //= require cocoon
+//= require chosen-jquery
 
 $(function (){  
-
+  $("#event_paciente_id").chosen();
+  $("#event_specialist_id").chosen();
+ 
+  $("#event_center_id").chosen();
+  $("#event_paciente_id").chosen().change(function(){
+    paciente_id = $("#event_client_id").val();
+  });
   $(".slidingDiv").hide();
   $(".show_hide").show();
   $('.show_hide').click(function(){
@@ -46,9 +53,3 @@ $(function (){
   $( "#tabs" ).tabs();
 
 });
-
-
-
-
-
-
