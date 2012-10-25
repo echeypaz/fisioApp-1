@@ -1,9 +1,8 @@
 - content_for :title, t(:events)
 #tabs
   %ul
-    %li=link_to "BUSCAR CITA","#tabs1"
     %li=link_to "CREAR NUEVA CITA","#tabs2"
-  
+    %li=link_to "BUSCAR CITA","#tabs1"
   #tabs1
     = render :partial => 'search_event'
   #tabs2

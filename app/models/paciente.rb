@@ -4,9 +4,6 @@ class Paciente < ActiveRecord::Base
     validates :idcode,  :uniqueness => { :case_sensitive => false },
                         :format => { :with =>/\d{8}[a-zA-Z]$/i},
                         :allow_blank => true                                    
-    validates :birthdate,
-              :format => { :with => /(\d{2,4})(\-)(0[0-9]|1[1-2])(\-)(0[0-9]|1[0-9]|2[0-9]|3[0-1])/},
-              :allow_blank => true
     validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i },
               :allow_blank => true
     validates :profession, :email, :length => {:maximum => 150}
@@ -27,10 +24,11 @@ class Paciente < ActiveRecord::Base
       if !birthdate.blank?
         ((DateTime.now - birthdate)/365).to_i
       end
-    end 
-    #Función para definir qué queremos mostrar en el autcompletar.
-    def funky_method
-      "#{self.name} #{self.firstsurname} #{self.secondsurname}, #{self.idcode}"
+    end
+
+    #Función para definir qué queremos mostrar en el chosen.
+    def full_name_search
+      "#{self.name} #{self.firstsurname} #{self.secondsurname}, #{self.idcode}, #{self.mobilephone}"
     end
   
     def last_clinicalhistory

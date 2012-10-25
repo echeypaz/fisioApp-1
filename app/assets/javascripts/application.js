@@ -7,16 +7,22 @@
 //= require twitter/bootstrap
 //= require_self
 //= require cocoon
-//= require chosen-jquery
+//= require autocomplete-rails
+//= require ajax-chosen
+//= require chosen
 
 $(function (){  
-  $("#event_paciente_id").chosen();
-  $("#event_specialist_id").chosen();
- 
-  $("#event_center_id").chosen();
+  $('.chzn-select').chosen().change( function() {
+   paciente_id = $(this).find('option:selected').val();
+   window.location.replace('/pacientes/' + paciente_id + '/edit');
+//   $.getJSON('/pacientes/' + paciente_id, function() {
+//    });
+  });
+  
   $("#event_paciente_id").chosen().change(function(){
     paciente_id = $("#event_client_id").val();
-  });
+   });
+  
   $(".slidingDiv").hide();
   $(".show_hide").show();
   $('.show_hide').click(function(){
@@ -51,5 +57,5 @@ $(function (){
               return false;
      });  
   $( "#tabs" ).tabs();
-
 });
+

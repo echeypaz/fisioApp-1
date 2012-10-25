@@ -36,9 +36,9 @@ group :assets do
   gem 'compass-rails'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 end
- 
+
+gem "ransack" 
 gem 'haml-rails'
-gem 'chosen-rails'
 gem 'kaminari'
 gem 'simple_form'
 gem 'show_for'
@@ -46,7 +46,7 @@ gem 'devise', '=1.5.2'
 gem 'cancan'
 gem 'cocoon'
 
-
+gem 'rails3-jquery-autocomplete'
 
 gem "paperclip", "~> 3.0"
 

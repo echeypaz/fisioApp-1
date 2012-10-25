@@ -1,4 +1,5 @@
 class PacientesController < InheritedResources::Base
+  respond_to :json
   def edit
     @paciente = Paciente.find(params[:id])
     @clinicalhistory = Clinicalhistory.find_by_id(params[:clinicalhistory])

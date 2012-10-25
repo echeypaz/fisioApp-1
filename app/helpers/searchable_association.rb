@@ -1,11 +1,3 @@
-module ApplicationHelper
-  def logo
-    image_tag("logo.png", :alt => "Usabi")
-  end
-  def logousabi
-    image_tag("logousabismall.png", :alt => "Usabi, tu socio tecnologico")
-  end
-
   def searchable_association(form, association, params = {})
     def_opt = {
         :input_html => {"data-placeholder" => t(:select)},
@@ -33,4 +25,3 @@ module ApplicationHelper
     options[:input_html][:class] = classes.join(" ")
     form.association association, options
   end
-end

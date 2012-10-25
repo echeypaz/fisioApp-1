@@ -1,9 +1,12 @@
 .form
-  = simple_form_for resource , :html => { :multipart => true } do |f|
+  = simple_form_for resource, :html => { :multipart => true } do |f|
     %div.errors
       = f.error_notification
     %fieldset.fieldset.span11 
       %legend.legend=t(:paciente)
+      .row 
+        .span4= label_tag t(:search_paciente)
+        .span3= select_tag :search_paciente_id,  options_from_collection_for_select(Paciente.all, 'id', 'full_name_search'), :class => 'chzn-select', :placeholder => "hola"
       %a.btn.btn-info.btn-mini.show_hide{:href=>"#"}= t(:show)
       .controls.controls-row
         .span3= f.input :name, :input_html => {:class => "span3"}

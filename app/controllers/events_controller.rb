@@ -39,27 +39,23 @@ class EventsController < InheritedResources::Base
     end
   end
 
-  # GET /events/new
-  # GET /events/new.xml
-  def new
-    @event = Event.new
-  end
-
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
   end
 
-  # POST /events
-  # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    @event.starts_at = params[:event_starts_at]
+    @event.ends_at = @event.starts_at + 1 
+    debugger 
     respond_to do |format|
       if @event.save
         flash[:notice] = "Cita para el paciente creada correctamente"
         format.html { redirect_to events_path}
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
+        flash[:error] ="No se ha podidio crear la cita, revise los campos"
         format.html { render :action => "index" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end

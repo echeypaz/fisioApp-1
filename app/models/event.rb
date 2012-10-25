@@ -8,15 +8,16 @@ class Event < ActiveRecord::Base
   has_one     :invoiceline
   belongs_to  :clinicalhistory
   validates :specialist_id, :center_id, :name, :firstsurname, :secondsurname, :presence => true
-  
-  
-  before_create  :set_default_parameters
+
+  validate :dates
+  before_save  :set_default_parameters
 
   scope :before, lambda {|end_time| {:conditions => ["ends_at < ?", Event.format_date(end_time)] }}
   scope :after, lambda {|start_time| {:conditions => ["starts_at > ?", Event.format_date(start_time)] }}
    
   # need to override the json view to return what full_calendar is expecting.
   # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
+
   def as_json(options = {})
     {
       :id => self.id,
@@ -42,7 +43,13 @@ class Event < ActiveRecord::Base
   def set_default_parameters
       self.title = "#{self.name} #{self.firstsurname} #{self.secondsurname}"
       self.description = "#{self.specialist.name}, #{self.center.name}"
-  #    self.ends_at = self.starts_at + 1
+      self.ends_at = self.starts_at + 1
+  end
+
+  def dates
+    if starts_at.blank? || ends_at.blank?
+      errors.add(:starts_at, :blank)
+    end
   end
 
 end

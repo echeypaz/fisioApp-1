@@ -21,6 +21,7 @@ FisioApp::Application.routes.draw do
 
   resources :clinicalhistories
 
+
   resources :pacientes do
     resources :clinialhistories
     get :new_clinicalhistory, :on => :member

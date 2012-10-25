@@ -1,26 +1,29 @@
-%fieldset.fielset
-  %legend.legend t(:event)
-  #event.form
-    = simple_form_for resource do |f|
-      .errors
-        = f.error_notification
-      .span12= f.association :paciente, :class => "chzn-select"
-      .span3= f.input :name
-      .span3= f.input :firstsurname
-      .span5= f.input :secondsurname
-      .span3
-        = label_tag 'Día'
-        = text_field_tag :dia, '', :id_element =>'dia', :class => "span3"
-      .span1
-        = label_tag 'Hora'
-        = text_field_tag :hora, '', :id_element =>'hora', :class => "span1"
-      .span3= f.association :center,:class => "chzn-select"
-      .span5= f.association :specialist, :prompt=> t(:specialist), :class => "chzn-select"
-      .span12= f.input :description,  :as=> :text, :input_html => { :rows => '3', :class => 'span5'}
-      .span6
-        = f.submit t(:new)
-        %button{:onClick => "confirmar_cita()"} Confirmar asistencia
-        %button{:onClick => "eliminar_cita()"} Eliminar cita
+#event.form.span12
+  = simple_form_for resource do |f|
+    .errors
+      = f.error_notification
+    .span12= f.association :paciente, :class => "chzn-select"
+    .span12= searchable_association f, :paciente, :ajax => {:url => "search"}, :wrapper_html => {:id => 'select_paciente'}
+    .span3= f.input :name
+    .span3= f.input :firstsurname
+    .span4= f.input :secondsurname
+    .span2
+      = label_tag 'Día'
+      = text_field_tag :dia, '', :id_element =>'dia', :class => "span2"
+    .span1
+      = label_tag 'Hora'
+      = text_field_tag :hora, '', :id_element =>'hora', :class => "span1"
+      = hidden_field_tag :event_starts_at
+    .span2
+      = label_tag "Duración"
+      = select_tag "periodo", options_for_select(["1 h", "1/2 h", "2 h"]), :class => 'span1'
+    .span3= f.association :center,:class => "chzn-select"
+    .span4= f.association :specialist, :prompt=> t(:specialist), :class => "chzn-select"
+    .span12= f.input :description,  :as=> :text, :input_html => { :rows => '1', :class => 'span10'}
+    .span6
+      = f.submit t(:new)
+      %button{:onClick => "confirmar_cita()"} Confirmar asistencia
+      %button{:onClick => "eliminar_cita()"} Eliminar cita
 :javascript
   function confirmar_cita(){
     var event_id = $("#id").val();
