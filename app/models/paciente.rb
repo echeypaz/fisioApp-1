@@ -5,7 +5,7 @@ class Paciente < ActiveRecord::Base
                         :format => { :with =>/\d{8}[a-zA-Z]$/i},
                         :allow_blank => true                                    
     validates :birthdate,
-              :format => { :with => /(\d{2,4})(\-)(0[0-9]|1[1-2])(\-)(0[0-9]|1[0-9]|2[0-9]|3[0-1])/},
+              :format => { :with => /(0[0-9]|1[0-9]|2[0-9]|3[0-1])(\-)(0[1-9]|1[0-2])(\-)(\d{2,4})/},
               :allow_blank => true
     validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i },
               :allow_blank => true

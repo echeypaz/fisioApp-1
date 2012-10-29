@@ -23,7 +23,7 @@ $(function (){
     $(".slidingDiv").slideToggle();
   });
 
-  $('#paciente_birthdate').datepicker({ dateFormat: 'yy-mm-dd' , changeYear: true,yearRange: '1950:2010'});
+  $('#paciente_birthdate').datepicker({ dateFormat: 'dd-mm-yy' , changeYear: true,yearRange: '1950:2010', setDate: new Date('1950')});
   $('#clinicalhistory_assessmentdate').datepicker({ dateFormat: 'dd-mm-yy' });
   $('#clinicalhistory_startdatetto').datepicker({ dateFormat: 'dd-mm-yy' });
   $('#clinicalhistory_enddatetto').datepicker({ dateFormat: 'dd-mm-yy' });  

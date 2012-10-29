@@ -15,5 +15,7 @@ class Center < ActiveRecord::Base
   validates :name, :presence => true,
                    :length => { :maximum => 80 },
                    :uniqueness => { :case_sensitive => false }
-
+  before_destroy do |clinicalhistories|
+    puts "Debe borrar las historias clinicas asociadas a este Centro"
+  end
 end

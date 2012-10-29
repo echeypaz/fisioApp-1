@@ -27,6 +27,10 @@ es:
               confirmation: "confirmación"
             email:
               taken: "ocupado"
+        paciente:
+          attributes:
+            birthdate:
+              invalid: "Formato de fecha inválido"
     models:
       user: "Usuario"
       paciente: "Paciente"
